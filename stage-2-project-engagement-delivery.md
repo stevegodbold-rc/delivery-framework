@@ -71,7 +71,7 @@ Each dimension is scored Green / Amber / Red by the Delivery Owner with a brief 
 | % of engagements at Green health | — | Fortnightly | Delivery Director |
 | Average time to resolve Amber or Red flags | — | Fortnightly | Delivery Owner |
 | Scope change velocity (changes per fortnight) | — | Fortnightly | Delivery Owner |
-| Billable utilisation (rolling 4-week) | 75-80% | Weekly | Resource Manager |
+| Billable utilisation (rolling 4-week) | Set annually from the business plan | Weekly | Resource Manager |
 | Bench time by practitioner | <10 days | Weekly | Resource Manager |
 | Active engagements per Delivery Owner | — | Monthly | Delivery Director |
 | Client business review completion rate | 100% | Monthly | Delivery Director |

@@ -29,11 +29,11 @@ The framework sits above project methodology. It does not prescribe whether a pr
 
 | Document | Description |
 |---|---|
-| [delivery-portfolio-management.md](delivery-portfolio-management.md) | Portfolio-level objectives, roles, sales and delivery alignment measures, cross-engagement measures, closure measures, and portfolio cadences. |
-| [stage-1-sales-to-delivery-transition.md](stage-1-sales-to-delivery-transition.md) | Gate 1 criteria, roles, transition meeting, Delivery Handover Record template, and per-engagement Stage 1 metrics including deal to delivery vehicle profiling variables. |
+| [delivery-portfolio-management.md](delivery-portfolio-management.md) | Portfolio-level objectives, roles, sales and delivery alignment measures, cross-engagement measures, closure measures, the financial view (bill-to-cash pipeline and revenue at risk), delivery-led sales signals, and portfolio cadences. |
+| [stage-1-sales-to-delivery-transition.md](stage-1-sales-to-delivery-transition.md) | Gate 1 criteria, roles, transition meeting, the Delivery Handover Record, and per-engagement Stage 1 metrics including deal to delivery vehicle profiling variables. |
 | [stage-2-project-engagement-delivery.md](stage-2-project-engagement-delivery.md) | Delivery cadence, engagement health scoring, scope and change management, workforce and utilisation guidance, and Stage 2 metrics. |
-| [stage-3-delivery-closure.md](stage-3-delivery-closure.md) | Gate 2 criteria, client closure meeting, internal retrospective, practitioner transition planning, Closure Acknowledgement template, and Stage 3 metrics. |
-| [stage-4-delivery-to-finance-transition.md](stage-4-delivery-to-finance-transition.md) | Gate 3 criteria, timesheet reconciliation, revenue recognition review, retention management, Finance Handover Record template, and Stage 4 metrics. |
+| [stage-3-delivery-closure.md](stage-3-delivery-closure.md) | Gate 2 criteria, client closure meeting, internal retrospective, practitioner transition planning, the Closure Acknowledgement, and Stage 3 metrics. |
+| [stage-4-delivery-to-finance-transition.md](stage-4-delivery-to-finance-transition.md) | Gate 3 criteria, timesheet reconciliation, revenue recognition review, retention management, the Finance Handover Record, and Stage 4 metrics. |
 
 ---
 
@@ -43,7 +43,7 @@ The framework sits above project methodology. It does not prescribe whether a pr
 
 ## Stage 1: Sales to Delivery Transition
 
-This stage ensures everything learned during the sales process is captured and handed to the delivery team before work begins. It covers Gate 1 criteria, roles, the transition meeting, risk identification, team composition, the Delivery Handover Record template, and the full Stage 1 metric set including timing, capability, alignment, capacity, and deal to delivery vehicle profiling variables.
+This stage ensures everything learned during the sales process is captured and handed to the delivery team before work begins. It covers Gate 1 criteria, roles, the transition meeting, risk identification, team composition, the Delivery Handover Record, and the full Stage 1 metric set including timing, capability, alignment, capacity, and deal to delivery vehicle profiling variables.
 
 See: [stage-1-sales-to-delivery-transition.md](stage-1-sales-to-delivery-transition.md)
 
@@ -59,7 +59,7 @@ See: [stage-2-project-engagement-delivery.md](stage-2-project-engagement-deliver
 
 ## Stage 3: Delivery Closure
 
-This stage covers the structured close of each engagement. It includes Gate 2 criteria, roles, the client closure meeting, internal retrospective, practitioner transition planning, the Closure Acknowledgement template, and Stage 3 metrics.
+This stage covers the structured close of each engagement. It includes Gate 2 criteria, roles, the client closure meeting, internal retrospective, practitioner transition planning, the Closure Acknowledgement, and Stage 3 metrics.
 
 See: [stage-3-delivery-closure.md](stage-3-delivery-closure.md)
 
@@ -67,7 +67,7 @@ See: [stage-3-delivery-closure.md](stage-3-delivery-closure.md)
 
 ## Stage 4: Delivery to Finance Transition
 
-This stage covers the financial close of each engagement. It includes Gate 3 criteria, roles, timesheet reconciliation, revenue recognition review, retention management, CRM and knowledge base update, the Finance Handover Record template, and Stage 4 metrics.
+This stage covers the financial close of each engagement. It includes Gate 3 criteria, roles, timesheet reconciliation, revenue recognition review, retention management, CRM and knowledge base update, the Finance Handover Record, and Stage 4 metrics.
 
 See: [stage-4-delivery-to-finance-transition.md](stage-4-delivery-to-finance-transition.md)
 

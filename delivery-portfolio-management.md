@@ -50,8 +50,8 @@ These measures inform hiring and job assignment decisions. They are reviewed at 
 | Metric | Description | Segment | Type | Owner |
 |---|---|---|---|---|
 | Deal stage for forecast | Pipeline stage distribution, probability-weighted by expected close date | By deal size and complexity | Leading | Sales / Delivery Director |
-| Mean lead time: close to start | Average elapsed days between contract signature and engagement kickoff | By deal size and complexity | Leading | Delivery Director |
-| Mean lead time: advertise to ready | Total elapsed days from job posting through to a new hire reaching billable productivity, combining time to hire and onboarding duration into a single end-to-end resourcing lead time | By seniority band | Leading | Resource Manager |
+| Mean lead time: close to start | Average elapsed days between contract signature and engagement kickoff | By deal size and complexity | Leading (calibration) | Delivery Director |
+| Mean lead time: advertise to ready | Total elapsed days from job posting through to a new hire reaching billable productivity, combining time to hire and onboarding duration into a single end-to-end resourcing lead time | By seniority band | Leading (calibration) | Resource Manager |
 
 > Advertise to ready is the operationally meaningful number for capacity planning. Knowing that a hire takes 30 days to secure and 45 days to reach productivity means the organisation must commit to a hiring decision 75 days before the delivery demand arrives. Tracking the two components separately is useful for diagnosing where delays occur, but the combined figure is what drives the planning decision.
 
@@ -137,6 +137,8 @@ These measures provide visibility of risks and patterns that exist across the en
 | Revenue per head | Total recognised revenue in the period divided by total headcount in the delivery workforce. Tracks volume and rate productivity across the team. | Lagging | Monthly | Finance Partner / Delivery Director |
 | Gross margin per head | Gross profit (revenue minus direct delivery cost) divided by total headcount in the delivery workforce. Tracks whether utilisation and rate are translating into profitable output. | Lagging | Monthly | Finance Partner / Delivery Director |
 
+> Revenue and gross margin per head are organisation-level aggregates for portfolio and hiring conversations. They are not individual performance measures, and should not be used to rank or evaluate individual practitioners.
+
 ### Cadence
 
 | Review | Frequency | Participants | Purpose |
@@ -152,6 +154,8 @@ These measures provide visibility of risks and patterns that exist across the en
 ### Purpose
 
 These measures track whether the organisation is closing engagements cleanly and capturing the full commercial and knowledge value of completed work. Poor closure is a portfolio-level risk, not just an individual engagement issue. Patterns in disputed invoices, delayed final billing, or missed retrospectives are signals about organisational process, not individual performance.
+
+Most of these measures are lagging: they confirm whether closure happened cleanly rather than warning that it is at risk. That is an acceptable trade-off at this stage of the framework, since closure is a final compliance check rather than an in-flight signal. The exception is practitioner transition lead time, a leading measure, since it is one place closure risk can still be headed off before it lands.
 
 ### Measures
 
@@ -272,8 +276,8 @@ Client maturity metrics — including engagement breadth across service types, n
 | % of disputed invoices preceded by Amber or Red commercial health | Financial view | Leading (calibration) | Quarterly | Finance Partner / Delivery Director |
 | % of extended DSO engagements preceded by Amber or Red commercial health | Financial view | Leading (calibration) | Quarterly | Finance Partner / Delivery Director |
 | Deal stage for forecast | Sales and delivery alignment | Leading | Monthly | Sales / Delivery Director |
-| Mean lead time: close to start | Sales and delivery alignment | Leading | Monthly | Delivery Director |
-| Mean lead time: advertise to ready | Sales and delivery alignment | Leading | Monthly | Resource Manager |
+| Mean lead time: close to start | Sales and delivery alignment | Leading (calibration) | Monthly | Delivery Director |
+| Mean lead time: advertise to ready | Sales and delivery alignment | Leading (calibration) | Monthly | Resource Manager |
 | T-shape density as % of population | Sales and delivery alignment | Leading | Monthly | Practice Lead |
 | Core skill population as % of total | Sales and delivery alignment | Leading | Monthly | Practice Lead |
 | Deal types with high delivery alignment as % of pipeline | Sales and delivery alignment | Leading | Monthly | Sales / Practice Lead |
