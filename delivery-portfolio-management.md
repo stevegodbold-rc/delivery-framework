@@ -27,7 +27,7 @@ The portfolio view is not a reporting layer on top of delivery. It is the mechan
 | Practice Lead | Owns workforce capability and elasticity data; inputs to hiring and skilling decisions |
 | Resource Manager | Owns capacity data; manages allocation across engagements; surfaces utilisation risks |
 | Finance Partner | Provides the commercial view of the portfolio; tracks forecast-to-actual variance across engagements |
-| Account Executive / Sales Lead | Provides pipeline visibility; co-owns the sales and delivery alignment measures |
+| Sales Lead | Provides pipeline visibility; co-owns the sales and delivery alignment measures |
 | Chief Customer Officer (CCO) | Owns client maturity and long-term account health; delivery-led sales measures are a shared input |
 | Delivery Owners | Contribute engagement-level health data; surface cross-portfolio dependencies, risks, and in-account growth signals |
 
@@ -118,7 +118,9 @@ These measures provide visibility of risks and patterns that exist across the en
 | Client business review completion rate | % of active clients with a completed business review in the current month | Leading | Monthly | Delivery Director |
 | Active engagements per Delivery Owner | Number of concurrent engagements held by each Delivery Owner | Leading | Monthly | Delivery Director |
 | Engagement health distribution | % of active engagements at Green / Amber / Red | Leading | Fortnightly | Delivery Director |
-| Scope change velocity | Average number of scope changes per engagement per fortnight, across the portfolio | Leading | Fortnightly | Delivery Director |
+| Engagements in Recovery and Exception status | Number of active engagements that have met a Recovery and Exception trigger condition and are under Delivery Director review | Leading | Fortnightly | Delivery Director |
+| Scope change velocity | Average number of scope changes per engagement per fortnight, reported separately by delivery vehicle: formally agreed changes on fixed-price engagements, and demand expansion on T&M engagements. The two are not the same signal and should not be blended into one portfolio average — rising fixed-price change volume is a scope-control risk, rising T&M demand is a growth signal | Leading | Fortnightly | Delivery Director |
+| Unagreed scope drift instances, fixed-price | Number of informal scope additions delivered outside change control on fixed-price engagements, across the portfolio | Leading | Fortnightly | Delivery Director |
 
 **Workforce**
 
@@ -134,6 +136,8 @@ These measures provide visibility of risks and patterns that exist across the en
 | Metric | Description | Type | Frequency | Owner |
 |---|---|---|---|---|
 | Forecast-to-actual revenue variance | Variance between forecast and recognised revenue across the portfolio | Lagging (calibration) | Monthly | Finance Partner |
+| Fixed-price engagements with cost-to-complete / EAC variance below target | Number of active fixed-price engagements where remaining budget is forecast to cover less than 100% of the revised cost to complete | Leading | Monthly | Finance Partner / Delivery Director |
+| T&M engagements with funding / PO runway below contractual notice period | Number of active T&M engagements where confirmed funded work remaining is shorter than the client's termination notice period | Leading | Fortnightly | Finance Partner / Delivery Director |
 | Revenue per head | Total recognised revenue in the period divided by total headcount in the delivery workforce. Tracks volume and rate productivity across the team. | Lagging | Monthly | Finance Partner / Delivery Director |
 | Gross margin per head | Gross profit (revenue minus direct delivery cost) divided by total headcount in the delivery workforce. Tracks whether utilisation and rate are translating into profitable output. | Lagging | Monthly | Finance Partner / Delivery Director |
 
@@ -165,6 +169,8 @@ Most of these measures are lagging: they confirm whether closure happened cleanl
 | Retrospective completion rate | % of completed engagements with a completed internal retrospective | 100% | Lagging | Practice Lead |
 | Days from final delivery to final invoice issued | Average elapsed days between confirmed delivery completion and final invoice raised | <5 business days | Lagging | Finance Partner |
 | Disputed final invoices | Number of final invoices disputed by clients in the period | 0 | Lagging | Finance Partner |
+| Engagements closed via early termination or partial closure | Number of engagements in the period closed via the alternate Gate 2 / Gate 3 route rather than full contracted completion | — | Lagging | Delivery Director |
+| Closure Acknowledgement escalations raised to Delivery Director | Number of engagements where the client did not provide a Closure Acknowledgement within 10 business days of request | 0 | Lagging | Delivery Director |
 | Practitioner transition lead time | % of practitioners with a confirmed next allocation at least 10 business days before engagement close | 100% | Leading | Resource Manager |
 | Retention release rate | % of held retentions released within the agreed timeframe | 100% | Lagging | Finance Partner |
 | Finance Handover Record completion rate | % of closed engagements with a completed Finance Handover Record | 100% | Lagging | Finance Partner |
@@ -174,7 +180,7 @@ Most of these measures are lagging: they confirm whether closure happened cleanl
 
 | Review | Frequency | Participants | Purpose |
 |---|---|---|---|
-| Closure health review | Monthly | Delivery Director, Finance Partner, Practice Lead | Review closure metric trends; identify patterns in late invoicing, disputed amounts, or missed retrospectives |
+| Closure health review | Monthly | Delivery Director, Finance Partner, Practice Lead | Review closure metric trends; identify patterns in late invoicing, disputed amounts, missed retrospectives, or a rising rate of early termination and partial closure |
 | Retention schedule review | Monthly | Finance Partner, Delivery Director | Confirm upcoming retention release dates and confirm follow-up ownership |
 
 ---
@@ -236,7 +242,7 @@ Revenue at risk is a probability-weighted view of commercial exposure in the act
 
 ### Purpose
 
-Delivery teams are in the room when the next opportunity is born. These measures create the habit of capturing that signal systematically. They are not sales metrics. They are delivery-sourced leading indicators of in-account growth potential, reviewed by the Delivery Director and shared with the Account Executive and CCO as inputs to account planning.
+Delivery teams are in the room when the next opportunity is born. These measures create the habit of capturing that signal systematically. They are not sales metrics. They are delivery-sourced leading indicators of in-account growth potential, reviewed by the Delivery Director and shared with the Sales Lead and CCO as inputs to account planning.
 
 Client maturity metrics are noted here for completeness but are more effectively owned by the CCO, who holds the broader account relationship view.
 
@@ -251,10 +257,12 @@ Delivery relationships confined to a single layer of the client organisation are
 | Out-of-scope requests declined or deferred | Number of requests that fell outside the agreed scope and were either declined or deferred, per engagement per quarter | Leading | Quarterly | Delivery Owner |
 | Active relationships by layer | Number of active stakeholder relationships per client, segmented by seniority layer (operational, management, executive) | Leading | Monthly | Delivery Owner |
 | Stakeholder relationship sentiment | Delivery Owner-assessed sentiment rating (Positive / Neutral / At risk) for each mapped stakeholder, reviewed at the monthly client business review | Leading | Monthly | Delivery Owner |
-| Active follow-on opportunity in CRM as % of active engagements | % of active engagements where a follow-on opportunity has been identified and logged in CRM by the Delivery Owner | Leading | Monthly | Delivery Owner / Account Executive |
-| Rate of client-initiated scope additions | Number of client-initiated scope additions per engagement per fortnight | Leading | Fortnightly | Delivery Owner |
+| Active follow-on opportunity in CRM as % of active engagements | % of active engagements where a follow-on opportunity has been identified and logged in CRM by the Delivery Owner | Leading | Monthly | Delivery Owner / Sales Lead |
+| Rate of client-initiated scope additions | Number of client-initiated scope additions per engagement per fortnight, reported separately for T&M and fixed-price engagements | Leading | Fortnightly | Delivery Owner |
 
-> A high rate of declined or deferred requests that are not flowing into the sales pipeline is a commercial leakage signal. The Delivery Owner is responsible for logging these in CRM and flagging them to the Account Executive.
+> A high rate of declined or deferred requests that are not flowing into the sales pipeline is a commercial leakage signal. The Delivery Owner is responsible for logging these in CRM and flagging them to the Sales Lead.
+>
+> Client-initiated scope additions mean different things depending on delivery vehicle, and should not be read as one signal. On a T&M engagement, a rising rate of client-initiated additions that are logged, priced, and resourced is a healthy demand-expansion signal for account planning. On a fixed-price engagement, additions that are agreed and reflected in a revised forecast are the same healthy signal; additions that are absorbed informally without going through change control are not growth, they are unagreed scope drift and a commercial risk — tracked separately as such in the Cross-Engagement measures above and feeding the Recovery and Exception mechanism in Stage 2 if they push the cost-to-complete position past threshold.
 
 **Client maturity** *(CCO-owned)*
 
@@ -264,7 +272,7 @@ Client maturity metrics — including engagement breadth across service types, n
 
 | Review | Frequency | Participants | Purpose |
 |---|---|---|---|
-| Delivery-led sales review | Monthly | Delivery Director, Account Executive, CCO | Review relationship depth, scope evolution signals, and expansion readiness across the active portfolio; align on account planning actions |
+| Delivery-led sales review | Monthly | Delivery Director, Sales Lead, CCO | Review relationship depth, scope evolution signals, and expansion readiness across the active portfolio; align on account planning actions |
 
 ---
 
@@ -278,9 +286,9 @@ Client maturity metrics — including engagement breadth across service types, n
 | Deal stage for forecast | Sales and delivery alignment | Leading | Monthly | Sales / Delivery Director |
 | Mean lead time: close to start | Sales and delivery alignment | Leading (calibration) | Monthly | Delivery Director |
 | Mean lead time: advertise to ready | Sales and delivery alignment | Leading (calibration) | Monthly | Resource Manager |
-| T-shape density as % of population | Sales and delivery alignment | Leading | Monthly | Practice Lead |
-| Core skill population as % of total | Sales and delivery alignment | Leading | Monthly | Practice Lead |
-| Deal types with high delivery alignment as % of pipeline | Sales and delivery alignment | Leading | Monthly | Sales / Practice Lead |
+| T-shape density as % of population | Sales and delivery alignment | Leading | Quarterly | Practice Lead |
+| Core skill population as % of total | Sales and delivery alignment | Leading | Quarterly | Practice Lead |
+| Deal types with high delivery alignment as % of pipeline | Sales and delivery alignment | Leading | Quarterly | Sales / Practice Lead |
 | Available hours | Sales and delivery alignment | Point-in-time | Monthly | Resource Manager |
 | Scheduled hours | Sales and delivery alignment | Point-in-time | Monthly | Resource Manager |
 | Remaining capacity | Sales and delivery alignment | Point-in-time | Monthly | Resource Manager |
@@ -288,12 +296,16 @@ Client maturity metrics — including engagement breadth across service types, n
 | Skilling gaps identified vs resolved | Cross-engagement | Leading | Monthly | Practice Lead |
 | Client business review completion rate | Cross-engagement | Leading | Monthly | Delivery Director |
 | Forecast-to-actual revenue variance | Cross-engagement | Lagging (calibration) | Monthly | Finance Partner |
+| Fixed-price engagements with cost-to-complete / EAC variance below target | Cross-engagement | Leading | Monthly | Finance Partner / Delivery Director |
+| T&M engagements with funding / PO runway below contractual notice period | Cross-engagement | Leading | Fortnightly | Finance Partner / Delivery Director |
 | Revenue per head | Cross-engagement | Lagging | Monthly | Finance Partner / Delivery Director |
 | Gross margin per head | Cross-engagement | Lagging | Monthly | Finance Partner / Delivery Director |
 | Client closure meeting completion rate | Closure | Lagging | Monthly | Delivery Director |
 | Retrospective completion rate | Closure | Lagging | Monthly | Practice Lead |
 | Days from final delivery to final invoice issued | Closure | Lagging | Monthly | Finance Partner |
 | Disputed final invoices | Closure | Lagging | Monthly | Finance Partner |
+| Engagements closed via early termination or partial closure | Closure | Lagging | Monthly | Delivery Director |
+| Closure Acknowledgement escalations raised to Delivery Director | Closure | Lagging | Monthly | Delivery Director |
 | Practitioner transition lead time | Closure | Leading | Monthly | Resource Manager |
 | Retention release rate | Closure | Lagging | Monthly | Finance Partner |
 | Finance Handover Record completion rate | Closure | Lagging | Monthly | Finance Partner |
@@ -309,9 +321,11 @@ Client maturity metrics — including engagement breadth across service types, n
 | Revenue at risk as % of total active portfolio value | Financial view | Leading | Monthly | Finance Partner |
 | Active relationships by layer | Delivery-led sales | Leading | Monthly | Delivery Owner |
 | Stakeholder relationship sentiment | Delivery-led sales | Leading | Monthly | Delivery Owner |
-| Active follow-on opportunity in CRM as % of active engagements | Delivery-led sales | Leading | Monthly | Delivery Owner / Account Executive |
+| Active follow-on opportunity in CRM as % of active engagements | Delivery-led sales | Leading | Monthly | Delivery Owner / Sales Lead |
 | Engagement health distribution (% Green / Amber / Red) | Cross-engagement | Leading | Fortnightly | Delivery Director |
-| Scope change velocity | Cross-engagement | Leading | Fortnightly | Delivery Director |
+| Engagements in Recovery and Exception status | Cross-engagement | Leading | Fortnightly | Delivery Director |
+| Scope change velocity (by delivery vehicle) | Cross-engagement | Leading | Fortnightly | Delivery Director |
+| Unagreed scope drift instances, fixed-price | Cross-engagement | Leading | Fortnightly | Delivery Director |
 | Rate of client-initiated scope additions | Delivery-led sales | Leading | Fortnightly | Delivery Owner |
 | Billable utilisation (rolling 4-week) | Cross-engagement | Leading | Weekly | Resource Manager |
 | Bench time by practitioner | Cross-engagement | Leading | Weekly | Resource Manager |

@@ -11,7 +11,7 @@ Ensure that everything learned during the sales process is captured and handed t
 Stage 1 is triggered when a deal reaches contract signature or a formal letter of engagement is issued.
 
 - A signed contract, SOW, or letter of engagement is in place
-- The Account Executive or Sales Lead has confirmed the deal is closed
+- The Sales Lead has confirmed the deal is closed
 - A scheduled handover date has been agreed between sales and delivery
 
 ---
@@ -20,7 +20,7 @@ Stage 1 is triggered when a deal reaches contract signature or a formal letter o
 
 | Role | Responsibility |
 |---|---|
-| Account Executive / Sales Lead | Delivers the handover briefing; remains available for context throughout Stage 1 |
+| Sales Lead | Delivers the handover briefing; remains available for context throughout Stage 1 |
 | Delivery Owner | Accepts the engagement, reviews the SOW, raises concerns before kickoff |
 | Practice Lead | Confirms resource availability and team composition |
 | Finance Partner | Confirms billing setup, revenue schedule, and PO reference |
@@ -41,14 +41,14 @@ Stage 1 is triggered when a deal reaches contract signature or a formal letter o
 
 ## Metrics
 
-| Metric | Category | Type | Owner |
-|---|---|---|---|
-| Time from signature to handover meeting completed | Transition timing | Leading | Delivery Owner |
-| % of engagements with completed Handover Record before kickoff | Transition compliance | Leading | Practice Lead |
-| Number of open risk items at Gate 1 | Risk | Point-in-time | Delivery Owner |
-| Complexity profile rating (8 variables, L/M/H) | Deal profiling | Point-in-time | Delivery Owner |
-| Uncertainty profile rating (5 variables, L/M/H) | Deal profiling | Point-in-time | Delivery Owner |
-| Composite profile and delivery vehicle recommendation | Deal profiling | Point-in-time | Delivery Owner + Practice Lead |
+| Metric | Type | Target | Frequency | Owner |
+|---|---|---|---|---|
+| Time from signature to handover meeting completed | Leading | — | Per engagement | Delivery Owner |
+| % of engagements with completed Handover Record before kickoff | Leading | 100% | Per engagement | Practice Lead |
+| Number of open risk items at Gate 1 | Point-in-time | — | Per engagement | Delivery Owner |
+| Complexity profile rating (8 variables, L/M/H) | Point-in-time | — | Per engagement | Delivery Owner |
+| Uncertainty profile rating (5 variables, L/M/H) | Point-in-time | — | Per engagement | Delivery Owner |
+| Composite profile and delivery vehicle recommendation | Point-in-time | — | Per engagement | Delivery Owner + Practice Lead |
 
 Portfolio-level measures covering sales and delivery alignment, cross-engagement capacity, and workforce capability are held in the delivery portfolio management document.
 
@@ -91,6 +91,18 @@ Each variable is rated Low / Medium / High at Gate 1 by the Delivery Owner in co
 | Low complexity / High uncertainty | Advisory or consulting model with defined review points and flexible scope |
 | High complexity / High uncertainty | Phased program with go/no-go gates; senior Delivery Owner required |
 | Low complexity / Low uncertainty | Lightweight engagement model; standard managed service or short-form project |
+
+### Re-Profiling Triggers
+
+The Gate 1 profile is a point-in-time judgement, not a permanent classification. The assumptions underneath it — sponsor stability, technical approach, scope stability — can break during delivery. Any of the following triggers a re-run of the profiling exercise:
+
+- The client sponsor changes
+- A Recovery and Exception Review is invoked (see Stage 2: Recovery and Exception Management)
+- Scope or duration extends materially beyond the original estimate
+
+The Delivery Owner and Practice Lead jointly own re-profiling, in the same way they owned the original exercise. It produces an updated composite profile and, where the profile shape has changed, a revised delivery vehicle recommendation. Both are logged as a dated entry in the Engagement Health Register (see Stage 2) alongside the Gate 1 record, rather than overwriting it — the framework needs visibility of how the engagement's shape has moved, not just where it started or where it currently sits.
+
+This is not a heavier mechanism than the original profiling. It is the same exercise, re-run when the evidence says the assumptions underneath it no longer hold.
 
 ---
 

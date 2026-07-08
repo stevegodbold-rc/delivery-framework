@@ -14,6 +14,8 @@ Ensure the engagement ends cleanly from every angle: client, commercial, and peo
 - The Finance Partner has confirmed the final billing position
 - The final engagement health register entry is complete
 
+Or, where the engagement ended before contracted scope was complete: the alternate Gate 2 route has been completed (documented reason, client-agreed statement of what was delivered and not delivered, revised commercial settlement, Delivery Director sign-off via the Exception Decision Record).
+
 ---
 
 ## Roles
@@ -22,14 +24,20 @@ Ensure the engagement ends cleanly from every angle: client, commercial, and peo
 |---|---|
 | Delivery Owner | Leads the closure process, owns the client relationship through to sign-off |
 | Project Manager | Confirms deliverable completion and documents outstanding items |
+| Practice Lead | Owns the internal retrospective and confirms the Delivery Knowledge Base entry is completed |
 | Finance Partner | Confirms final billing, revenue recognition, and any retentions |
-| Account Executive | Joins the closure conversation to support relationship continuity and identify follow-on opportunities |
+| Resource Manager | Confirms each practitioner's next allocation before the engagement closes |
+| Sales Lead | Joins the closure conversation to support relationship continuity and identify follow-on opportunities |
 
 ---
 
 ## Key Activities
 
 **Client closure meeting.** A structured meeting with the client sponsor to confirm what was delivered, what was not and why, agreed next steps for any outstanding items, and the client's honest view of how the engagement went. The output is a Closure Acknowledgement, received as a signed document or email confirmation from the client representative.
+
+**Early termination and partial closure.** Where the engagement reached Gate 2 via the early termination or partial closure route, the client closure meeting still happens, but its content follows the Exception Decision Record rather than a completed scope: confirming the client-agreed statement of what was delivered and what was not, the final commercial settlement, and, where relevant, the record of why the engagement ended, in terms both parties are willing to have on file. The Closure Acknowledgement is still sought in good faith, but is subject to the escalation route below, since a client who is unhappy or disengaged has no equivalent incentive to sign promptly.
+
+**Closure Acknowledgement escalation.** If the client has not provided the Closure Acknowledgement within 10 business days of it being requested, the Delivery Owner escalates to the Delivery Director. The Delivery Director makes one further documented attempt to secure it. If there is still no response after a further 5 business days, the Delivery Director may approve proceeding to Gate 3 without a client signature, provided the attempts to secure it — dates, channel, and content of each request — are logged in place of the signed acknowledgement. This exists so a withheld signature cannot be used as indefinite leverage; it does not remove the obligation to seek the client's sign-off in good faith first.
 
 **Internal retrospective (45-60 minutes).** The primary knowledge capture mechanism for the engagement. Output is a completed Delivery Knowledge Base entry.
 
@@ -46,13 +54,15 @@ Retrospective agenda:
 
 ## Metrics
 
-| Metric | Target | Frequency | Owner |
-|---|---|---|---|
-| % of engagements with completed client closure meeting | 100% | Per engagement | Delivery Owner |
-| % of practitioners with confirmed next allocation 10+ days before closure | 100% | Per engagement | Resource Manager |
-| Disputed final invoices | 0 | Per engagement | Finance Partner |
-| Retrospective completion rate | 100% | Per engagement | Practice Lead |
-| Days from final delivery to final invoice issued | <5 business days | Per engagement | Finance Partner |
+| Metric | Type | Target | Frequency | Owner |
+|---|---|---|---|---|
+| % of engagements with completed client closure meeting | Lagging | 100% | Per engagement | Delivery Owner |
+| % of practitioners with confirmed next allocation 10+ days before closure | Leading | 100% | Per engagement | Resource Manager |
+| Disputed final invoices | Lagging | 0 | Per engagement | Finance Partner |
+| Retrospective completion rate | Lagging | 100% | Per engagement | Practice Lead |
+| Days from final delivery to final invoice issued | Lagging | <5 business days | Per engagement | Finance Partner |
+| Engagements closed via early termination or partial closure | Lagging | — | Per engagement | Delivery Director |
+| Closure Acknowledgement escalations raised to Delivery Director | Lagging | 0 | Per engagement | Delivery Owner |
 
 ---
 
@@ -60,7 +70,7 @@ Retrospective agenda:
 
 All of the following must be confirmed before the engagement moves to Stage 4:
 
-- The Closure Acknowledgement has been received from the client (signed or email-confirmed)
+- The Closure Acknowledgement has been received from the client (signed or email-confirmed), or the Closure Acknowledgement escalation route has been completed and documented attempts are logged in its place
 - The internal retrospective has been completed and a Delivery Knowledge Base entry has been filed
 - All practitioners have confirmed next allocations
 - All timesheets for the engagement have been submitted and approved
