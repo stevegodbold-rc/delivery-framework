@@ -28,8 +28,49 @@ The portfolio view is not a reporting layer on top of delivery. It is the mechan
 | Resource Manager | Owns capacity data; manages allocation across engagements; surfaces utilisation risks |
 | Finance Partner | Provides the commercial view of the portfolio; tracks forecast-to-actual variance across engagements |
 | Sales Lead | Provides pipeline visibility; co-owns the sales and delivery alignment measures |
-| Chief Customer Officer (CCO) | Owns client maturity and long-term account health; delivery-led sales measures are a shared input |
+| Chief Customer Officer (CCO) | Owns client maturity and long-term account health; chairs the Delivery-Led Sales Review; delivery-led sales measures are a shared input |
 | Delivery Owners | Contribute engagement-level health data; surface cross-portfolio dependencies, risks, and in-account growth signals |
+
+---
+
+## Delegation of Authority
+
+Stage 2's Recovery and Exception Management describes what the Delivery Director may decide. It does not, on its own, say where that authority stops, or what a Delivery Owner may decide without invoking the Delivery Director at all. This section makes both boundaries explicit.
+
+The table below defines the decisions in question and the bands that separate a Delivery Owner's authority from the Delivery Director's, and the Delivery Director's from the Managing Director's. It does not contain the values that define those bands. Consistent with this framework's principle that it does not set financial targets independently of the business plan, the commercial value thresholds referenced below — the point at which a concession or write-off moves from the Delivery Owner's band into the Delivery Director's, and from the Delivery Director's into the Managing Director's — are set annually from the business plan and recorded alongside it. This document deliberately does not set them.
+
+Two things follow from that structure. First, the lowest band gives the Delivery Owner real authority: small, low-risk commercial decisions no longer require convening an Exception Review, provided they are logged in the Engagement Health Register. This does not weaken the Recovery and Exception mechanism — the trigger conditions in Stage 2 are unchanged, and anything that meets a trigger, or that the Delivery Owner or Finance Partner is not comfortable deciding alone, still goes to an Exception Review regardless of value. It removes the requirement to convene a review for decisions genuinely small enough not to need one. Second, the Delivery Director's authority now has a stated upper bound: above the Delivery Director's band, or for a strategic account, the decision escalates to the Managing Director, with the Finance Partner informing that decision. This closes the gap this framework previously left open, where the Delivery Director's commercial authority was described without a ceiling.
+
+| Decision | Within Delivery Owner band | Within Delivery Director band | Above Delivery Director band | Where decided | Where recorded |
+|---|---|---|---|---|---|
+| Commercial concession (discount, fee cap, absorbed cost) | Approved directly, without convening an Exception Review | Approved via Exception Review | Escalates to the Managing Director, with the Finance Partner | Delivery Owner (lowest band); Exception Review (Delivery Director band); Managing Director, informed by the Finance Partner (above-band) | Engagement Health Register (lowest band); Exception Decision Record (Delivery Director band and above) |
+| Write-off of unrecoverable cost | Approved directly, without convening an Exception Review | Approved via Exception Review | Escalates to the Managing Director, with the Finance Partner | Same three-band structure as above | Engagement Health Register (lowest band); Exception Decision Record (Delivery Director band and above) |
+| Scope renegotiation, including documented partial delivery | Not delegated to the Delivery Owner | Approved via Exception Review | Strategic accounts, or above-band value, escalate to the Managing Director | Exception Review (Delivery Director band); Managing Director (above-band) | Exception Decision Record |
+| Early termination | Not delegated to the Delivery Owner | Approved via Exception Review | Strategic accounts, or above-band value, escalate to the Managing Director | Exception Review (Delivery Director band); Managing Director (above-band) | Exception Decision Record |
+| Proceeding to Gate 3 without a client-signed Closure Acknowledgement | Not delegated to the Delivery Owner | Approved, following the documented escalation route (not value-banded) | Not applicable — does not escalate beyond the Delivery Director | Delivery Director, after the escalation route in Stage 3. A further attempt to secure sign-off may be made by whoever holds the strongest client relationship — often the Sales Lead or CCO — but the decision itself stays with the Delivery Director | Closure Acknowledgement escalation log |
+| Project Board / client governance representation | Senior Delivery Owner (not the engagement's own), for Green or Amber engagements | Delivery Director, for Red-status and threshold engagements | Not applicable | Assigned at the monthly Portfolio Health Review | Engagement Health Register |
+| Conditional acceptance disputes at Gate 1 | Not delegated to the Delivery Owner — this is the dispute the Delivery Director resolves | Decided by the Delivery Director | Not applicable | Delivery Director, per Stage 1 | Delivery Handover Record |
+
+---
+
+## Standing Forums
+
+The Delivery Director's standing forum load is consolidated into three monthly forums plus one co-scheduled quarterly calibration block. No review content described elsewhere in this document has been removed by this consolidation — it is grouped by who needs to be in the room, not scattered across separate meetings with the same core participants and adjacent subject matter.
+
+| Forum | Frequency | Participants | Agenda segments |
+|---|---|---|---|
+| Portfolio Health Review | Monthly | Delivery Director, all Delivery Owners, Practice Lead, Resource Manager | Cross-portfolio health distribution, workforce pressure, and concentration risk — unchanged, the anchor forum |
+| Capacity Review | Monthly | Delivery Director, Resource Manager, Sales Lead, Practice Lead | Demand reconciliation (weighted pipeline vs. available and planned capacity); workforce response (hiring lead times vs. forecast demand, skilling priorities, hiring requisition queue WIP/aging) |
+| Commercial Health Review | Monthly | Delivery Director, Finance Partner (Practice Lead joins for the closure segment) | Forecast and bill-to-cash (forecast-to-actual variance, revenue at risk, DSO, upcoming milestone billings); retention schedule (upcoming retention release dates, follow-up ownership); closure health (closure metric trends, disputed amounts, missed retrospectives, early termination rate) |
+| Quarterly Calibration Block | Quarterly, co-scheduled as one half-day block | Delivery Director, Finance Partner, Sales Lead, Practice Lead, CCO (by segment) | Health-to-billing calibration; Alignment health check (including estimate-vs-actual solution design variance and deal quality correlation on threshold deals); Win Review |
+
+Three changes sit behind this table:
+
+- **The Commercial Health Review merges the Finance and Forecast Review, the Retention Schedule Review, and the Closure Health Review.** All three were monthly meetings with the same two co-owners — the Delivery Director and Finance Partner — covering adjacent commercial subject matter. Running them as three separate meetings was meeting structure, not governance value. The content of all three is preserved as named agenda segments within one forum, and the Practice Lead still joins for the closure segment as before.
+- **The Capacity Review formally merges the Pipeline and Capacity Review with the Hiring and Skilling Review**, which this document already described as linked. Demand reconciliation and workforce response are two sides of the same conversation about whether the workforce can meet the pipeline, and belong in the same room rather than two adjacent monthly meetings with three of the same four participants.
+- **The Quarterly Calibration Block co-schedules the Health-to-Billing Calibration, the Alignment Health Check, and the Win Review as one half-day block of three distinct segments**, rather than three separate quarterly meetings. Calibration reviews are the first casualties of informal meeting attrition: quarterly cadence and the absence of an obvious trigger condition make them easy to quietly deprioritise when a diary gets tight. Co-scheduling protects them structurally rather than relying on discipline alone — the external review that first flagged this framework's calibration gap predicted exactly this failure mode.
+
+The Delivery-Led Sales Review moves to CCO chairing (see Delivery-Led Sales, below): the Delivery Director now attends quarterly rather than monthly, with delivery-sourced signals continuing to flow via Delivery Owners' CRM logging. The Workforce Review (Practice Lead and Resource Manager, monthly) is unchanged and remains the one standing forum without the Delivery Director.
 
 ---
 
@@ -55,7 +96,7 @@ These measures inform hiring and job assignment decisions. They are reviewed at 
 
 > Advertise to ready is the operationally meaningful number for capacity planning. Knowing that a hire takes 30 days to secure and 45 days to reach productivity means the organisation must commit to a hiring decision 75 days before the delivery demand arrives. Tracking the two components separately is useful for diagnosing where delays occur, but the combined figure is what drives the planning decision.
 >
-> Both lead-time measures are reported as a distribution (p50 / p85), not a mean. This framework treats a delivery plan as a probability distribution, not a commitment, and a mean lead time hides exactly the tail that matters for planning: the p85 is what should drive the hiring decision or the kickoff commitment, because it reflects the case that actually blows out the schedule. A mean of 30 days can sit alongside a p85 of 55 days without the average ever showing it. Where the two figures diverge significantly, that gap is itself a signal worth raising at the pipeline and capacity review.
+> Both lead-time measures are reported as a distribution (p50 / p85), not a mean. This framework treats a delivery plan as a probability distribution, not a commitment, and a mean lead time hides exactly the tail that matters for planning: the p85 is what should drive the hiring decision or the kickoff commitment, because it reflects the case that actually blows out the schedule. A mean of 30 days can sit alongside a p85 of 55 days without the average ever showing it. Where the two figures diverge significantly, that gap is itself a signal worth raising at the Capacity Review.
 
 **Capability variables**
 
@@ -95,13 +136,25 @@ Reading the two metrics together:
 
 > Remaining capacity is the most operationally sensitive of the three. It should be held above a minimum threshold at all times to absorb natural delivery variance. The threshold is set by the Resource Manager in the context of the current portfolio and hiring position, and reviewed monthly.
 
+**Deal quality variables**
+
+The measures above cover whether the organisation can resource what it sells. They do not cover whether what it sells is well-formed to begin with. Stage 1's Deal Quality at Handover score — scope clarity, commercial position, risk allocation, and expectation accuracy, each rated Green / Amber / Red at Gate 1 — is the per-deal input. This is where it is aggregated into a portfolio-level signal.
+
+| Metric | Description | Type | Owner |
+|---|---|---|---|
+| Deal Quality at Handover score, aggregated | Quarterly rollup of Gate 1 Deal Quality at Handover scores across all deals handed over in the period, segmented by deal type and by originating Sales Lead | Leading | Delivery Director |
+| Deal quality to downstream outcome correlation | Proportion of engagements with an Amber or Red Deal Quality at Handover score that subsequently trigger a Recovery and Exception review, breach an EAC threshold, record unagreed scope drift, or produce a disputed final invoice | Leading (calibration) | Delivery Director / Sales Lead |
+
+> This mirrors the health-to-billing calibration pattern in the Financial View section: correlating an upstream rating against downstream outcomes over time is what keeps the rating honest, rather than trusting it at face value from day one. As with commercial health and billing friction, the relationship is directional — a poor Deal Quality at Handover score is a leading indicator of downstream delivery risk, not a coincident one.
+>
+> This is portfolio-level calibration data, not an evaluation of individual Sales Leads on any single deal. A single deal's Amber or Red rating has context — a specific client situation, a competitive process, a strategic account decision — that a point-in-time score cannot capture. Aggregating by Sales Lead exists to surface patterns across many deals, not to score one.
+
 ### Cadence
 
 | Review | Frequency | Participants | Purpose |
 |---|---|---|---|
-| Alignment health check | Quarterly | Delivery Director, Practice Lead, Sales Lead | Review trend data on core skill population and pipeline alignment; identify structural drift |
-| Pipeline and capacity review | Monthly | Delivery Director, Resource Manager, Sales Lead, Practice Lead | Reconcile weighted pipeline against available and planned capacity; surface hiring or skilling triggers |
-| Hiring and skilling review | Monthly (linked to pipeline review) | Practice Lead, Resource Manager, Delivery Director | Confirm hiring lead times against forecast demand; prioritise skilling investment |
+| Alignment health check | Quarterly (co-scheduled within the Quarterly Calibration Block) | Delivery Director, Practice Lead, Sales Lead | Review trend data on core skill population and pipeline alignment; review the Deal Quality at Handover aggregation and its correlation with downstream outcomes; on threshold deals, review estimate-vs-actual variance against the co-signed solution design; identify structural drift |
+| Capacity Review | Monthly | Delivery Director, Resource Manager, Sales Lead, Practice Lead | Demand reconciliation: reconcile weighted pipeline against available and planned capacity, surfacing hiring or skilling triggers. Workforce response: confirm hiring lead times against forecast demand; prioritise skilling investment |
 
 ---
 
@@ -151,7 +204,7 @@ These measures provide visibility of risks and patterns that exist across the en
 |---|---|---|---|
 | Portfolio health review | Monthly | Delivery Director, all Delivery Owners, Practice Lead, Resource Manager | Review cross-portfolio health distribution, workforce pressure, and concentration risks |
 | Workforce review | Monthly | Practice Lead, Resource Manager | Utilisation, bench time, allocation gaps, and skilling investment priorities |
-| Finance and forecast review | Monthly | Delivery Director, Finance Partner | Forecast-to-actual variance, revenue recognition status, and commercial risk across the portfolio |
+| Commercial Health Review | Monthly | Delivery Director, Finance Partner (Practice Lead joins for the closure segment) | Forecast and bill-to-cash segment: forecast-to-actual variance, revenue recognition status, and commercial risk across the portfolio |
 
 ---
 
@@ -168,11 +221,11 @@ The portfolio already tracks utilisation, bench time, resource-gap fill time, an
 | Delivery Owner engagement load | Concurrent engagements held by each Delivery Owner, weighted by delivery vehicle complexity rather than counted flat | Complexity-weighted ceiling set per Delivery Owner at the monthly portfolio review | A Delivery Owner at their ceiling does not receive a new engagement without an explicit capacity trade-off decision at the portfolio review: something else moves, is delayed, or another Delivery Owner takes it | Delivery Director |
 | Resource gap queue | Concurrently open, unresolved resource gaps the Resource Manager is carrying | Gap open beyond 10 business days | Escalates to the Practice Lead | Resource Manager |
 | Bench queue | Practitioners without confirmed allocation, viewed as a queue rather than only as individual bench-time entries | Bench count as a % of total delivery headcount | Read alongside Remaining capacity; if the bench queue grows past what Remaining capacity was sized to absorb, the buffer sizing itself is treated as wrong and revisited, not the bench | Resource Manager |
-| Hiring requisition queue | Concurrent open requisitions per practice area | WIP limit on concurrent open requisitions per practice area; aging flag when a requisition exceeds the calibrated advertise-to-ready benchmark for its seniority band | Requisitions exceeding the practice area limit are not posted until an existing requisition closes or the limit is explicitly raised at the hiring and skilling review | Practice Lead |
+| Hiring requisition queue | Concurrent open requisitions per practice area | WIP limit on concurrent open requisitions per practice area; aging flag when a requisition exceeds the calibrated advertise-to-ready benchmark for its seniority band | Requisitions exceeding the practice area limit are not posted until an existing requisition closes or the limit is explicitly raised at the Capacity Review | Practice Lead |
 | Recovery and Exception queue | Engagements currently in Recovery and Exception status | Days an engagement has remained in Recovery and Exception status | An exception open beyond the agreed review interval is escalated as a governance issue in its own right, separate from the underlying engagement problem | Delivery Director |
-| Sales-to-delivery handoff queue | Signed-but-not-yet-started engagements queued for Gate 1 / kickoff | Queue length, point-in-time | A growing queue is raised at the pipeline and capacity review as an earlier warning than the lead-time distribution above, before the mean or the p85 shows it | Delivery Director |
+| Sales-to-delivery handoff queue | Signed-but-not-yet-started engagements queued for Gate 1 / kickoff | Queue length, point-in-time | A growing queue is raised at the Capacity Review as an earlier warning than the lead-time distribution above, before the mean or the p85 shows it | Delivery Director |
 
-**Delivery Owner engagement load.** The existing Active engagements per Delivery Owner metric tracks a count with no ceiling. Engagement weight is not a fixed point-scoring formula: a Phased Program or Structured Project engagement counts for more of a Delivery Owner's ceiling than a Lightweight or Advisory engagement, following the same profile categories set at Gate 1. The ceiling itself is set per Delivery Owner, not fixed globally, because leadership strength and engagement mix vary by person. It is agreed and revisited at the monthly portfolio review.
+**Delivery Owner engagement load.** The existing Active engagements per Delivery Owner metric tracks a count with no ceiling. Engagement weight is not a fixed point-scoring formula: a Phased Program or Structured Project engagement counts for more of a Delivery Owner's ceiling than a Lightweight or Advisory engagement, following the same profile categories set at Gate 1. The ceiling itself is set per Delivery Owner, not fixed globally, because leadership strength and engagement mix vary by person. It is agreed and revisited at the monthly portfolio review. Material pre-signature involvement on a threshold deal (see Stage 1: Pre-Signature Profiling on Threshold Deals) counts toward this ceiling in the same way as any other active commitment — it is real capacity spent, not invisible work sitting outside the queue.
 
 **Resource gap queue.** Time to fill open resource gaps is currently reported as an average, which hides how many gaps are open at once. The queue-length view — how many unresolved gaps the Resource Manager is carrying at a point in time — surfaces pressure the average cannot. A gap open beyond 10 business days, mirroring the existing bench-time threshold, escalates to the Practice Lead rather than sitting in the average indefinitely.
 
@@ -186,7 +239,7 @@ The portfolio already tracks utilisation, bench time, resource-gap fill time, an
 
 ### Cadence
 
-Queue and WIP data is reviewed within the existing standing reviews, not a new one. The Delivery Owner engagement load, Recovery and Exception queue, and sales-to-delivery handoff queue are reviewed as part of the monthly Portfolio health review; the resource gap queue and bench queue are reviewed as part of the monthly Workforce review; the hiring requisition queue and both lead-time distributions are reviewed as part of the monthly Pipeline and capacity review. No additional meeting is introduced by this section.
+Queue and WIP data is reviewed within the existing standing forums, not a new one. The Delivery Owner engagement load, Recovery and Exception queue, and sales-to-delivery handoff queue are reviewed as part of the monthly Portfolio Health Review; the resource gap queue and bench queue are reviewed as part of the monthly Workforce Review; the hiring requisition queue and both lead-time distributions are reviewed as part of the monthly Capacity Review. No additional meeting is introduced by this section.
 
 ---
 
@@ -217,8 +270,8 @@ Most of these measures are lagging: they confirm whether closure happened cleanl
 
 | Review | Frequency | Participants | Purpose |
 |---|---|---|---|
-| Closure health review | Monthly | Delivery Director, Finance Partner, Practice Lead | Review closure metric trends; identify patterns in late invoicing, disputed amounts, missed retrospectives, or a rising rate of early termination and partial closure |
-| Retention schedule review | Monthly | Finance Partner, Delivery Director | Confirm upcoming retention release dates and confirm follow-up ownership |
+| Commercial Health Review (closure segment) | Monthly | Delivery Director, Finance Partner, Practice Lead | Review closure metric trends; identify patterns in late invoicing, disputed amounts, missed retrospectives, or a rising rate of early termination and partial closure |
+| Commercial Health Review (retention schedule segment) | Monthly | Finance Partner, Delivery Director | Confirm upcoming retention release dates and confirm follow-up ownership |
 
 ---
 
@@ -234,7 +287,7 @@ The financial view is co-owned by the Delivery Director and Finance Partner, and
 
 **Bill-to-cash pipeline**
 
-The bill-to-cash pipeline view tracks the financial position of every active and recently closed engagement across the four framework stages. It is a point-in-time snapshot reviewed at the monthly finance and forecast review.
+The bill-to-cash pipeline view tracks the financial position of every active and recently closed engagement across the four framework stages. It is a point-in-time snapshot reviewed at the monthly Commercial Health Review.
 
 | Metric | Description | Type | Frequency | Owner |
 |---|---|---|---|---|
@@ -270,8 +323,8 @@ Revenue at risk is a probability-weighted view of commercial exposure in the act
 
 | Review | Frequency | Participants | Purpose |
 |---|---|---|---|
-| Finance and forecast review | Monthly | Delivery Director, Finance Partner | Bill-to-cash pipeline position, revenue at risk, DSO trend, and upcoming milestone billings |
-| Health-to-billing calibration | Quarterly | Delivery Director, Finance Partner | Review correlation between commercial health ratings and billing friction outcomes; recalibrate probability adjustments for revenue at risk |
+| Commercial Health Review (forecast and bill-to-cash segment) | Monthly | Delivery Director, Finance Partner | Bill-to-cash pipeline position, revenue at risk, DSO trend, and upcoming milestone billings |
+| Health-to-billing calibration | Quarterly, co-scheduled within the Quarterly Calibration Block | Delivery Director, Finance Partner | Review correlation between commercial health ratings and billing friction outcomes; recalibrate probability adjustments for revenue at risk |
 
 ---
 
@@ -279,9 +332,9 @@ Revenue at risk is a probability-weighted view of commercial exposure in the act
 
 ### Purpose
 
-Delivery teams are in the room when the next opportunity is born. These measures create the habit of capturing that signal systematically. They are not sales metrics. They are delivery-sourced leading indicators of in-account growth potential, reviewed by the Delivery Director and shared with the Sales Lead and CCO as inputs to account planning.
+Delivery teams are in the room when the next opportunity is born. These measures create the habit of capturing that signal systematically. They are not sales metrics. They are delivery-sourced leading indicators of in-account growth potential, fed continuously into account planning via Delivery Owners' CRM logging, and reviewed formally at the Delivery-Led Sales Review.
 
-Client maturity metrics are noted here for completeness but are more effectively owned by the CCO, who holds the broader account relationship view.
+Client maturity metrics are noted here for completeness but are more effectively owned by the CCO, who holds the broader account relationship view. The Delivery-Led Sales Review itself is chaired and owned by the CCO, consistent with that ownership: the CCO already owns client maturity and long-term account health elsewhere in this section, and consolidating chairing there removes a second monthly forum covering adjacent ground. The Delivery Director's role becomes contributor rather than chair, attending quarterly rather than monthly; the underlying delivery-sourced signal is not weakened by this, since it continues to flow into account planning monthly via Delivery Owners' CRM logging rather than depending on the Delivery Director's monthly attendance to surface it.
 
 ### Measures
 
@@ -309,7 +362,34 @@ Client maturity metrics — including engagement breadth across service types, n
 
 | Review | Frequency | Participants | Purpose |
 |---|---|---|---|
-| Delivery-led sales review | Monthly | Delivery Director, Sales Lead, CCO | Review relationship depth, scope evolution signals, and expansion readiness across the active portfolio; align on account planning actions |
+| Delivery-Led Sales Review | Monthly, chaired by the CCO | CCO (chair), Sales Lead, Delivery Director (quarterly attendance) | Review relationship depth, scope evolution signals, and expansion readiness across the active portfolio; align on account planning actions |
+
+---
+
+## Win Review
+
+### Purpose
+
+Most organisations run a win/loss review on deals they did not close. Almost none run the equivalent review on deals they did close, against how those deals actually performed in delivery — which is where the tuition really is. The Win Review closes that gap. It is a quarterly, co-owned Delivery Director and CCO exercise: a small sample of won deals, walked end-to-end from pre-signature decisions through handover, delivery health history, closure, and financial outcome, as a case-study analysis of how well the framework itself is performing.
+
+As with the closure measures and the Deal Quality at Handover aggregation elsewhere in this document, this is not a performance review of the people involved. It signals something about organisational process — where the framework's checkpoints held and where they didn't — not about individual performance on any one deal.
+
+### How it runs
+
+Each quarter, the Delivery Director and CCO jointly select 2-4 won deals from the period, chosen for variety rather than convenience: a clean success, a troubled engagement, an early termination if one occurred in the period, and a threshold deal that went through pre-signature profiling and solution design co-sign. The review draws entirely on artefacts the framework already produces — the Deal Quality at Handover score, the Delivery Handover Record, the Engagement Health Register history, Exception Decision Records where applicable, the Closure Acknowledgement, the retrospective and knowledge base entry, and the Finance Handover Record — rather than requiring any new data collection. That an unbroken paper trail exists end-to-end for a given deal is itself a signal of how well the framework is being followed; where it doesn't, that gap is a finding in its own right.
+
+### Outputs
+
+Two distinct outputs, kept separate:
+
+- **Framework improvement opportunities**, fed as standing input into the annual Framework design and updates review (see Governance and Ownership in the readme). The Win Review is the evidence base that review draws on, rather than that review starting from a blank page each year.
+- **Cross-boundary observations**, shared directly with sales and practice leadership where a case shows an upstream decision pattern — pricing, scoping, or team shape — worth changing before the next similar deal is sold.
+
+### Cadence
+
+| Review | Frequency | Participants | Purpose |
+|---|---|---|---|
+| Win Review | Quarterly, co-scheduled within the Quarterly Calibration Block | Delivery Director, CCO | Sample and walk 2-4 won deals end-to-end against the framework's own record; identify framework improvement opportunities and cross-boundary observations for sales and practice leadership |
 
 ---
 
@@ -329,6 +409,8 @@ Client maturity metrics — including engagement breadth across service types, n
 | Available hours | Sales and delivery alignment | Point-in-time | Monthly | Resource Manager |
 | Scheduled hours | Sales and delivery alignment | Point-in-time | Monthly | Resource Manager |
 | Remaining capacity | Sales and delivery alignment | Point-in-time | Monthly | Resource Manager |
+| Deal Quality at Handover score, aggregated | Sales and delivery alignment | Leading | Quarterly | Delivery Director |
+| Deal quality to downstream outcome correlation | Sales and delivery alignment | Leading (calibration) | Quarterly | Delivery Director / Sales Lead |
 | Active engagements per Delivery Owner | Cross-engagement | Leading | Monthly | Delivery Director |
 | Skilling gaps identified vs resolved | Cross-engagement | Leading | Monthly | Practice Lead |
 | Client business review completion rate | Cross-engagement | Leading | Monthly | Delivery Director |

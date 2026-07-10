@@ -30,8 +30,8 @@ The framework sits above project methodology. It does not prescribe whether a pr
 | Document | Description |
 |---|---|
 | [professional-services-value-chain.md](professional-services-value-chain.md) | The wider value chain this framework sits within: how value is created, transferred, and captured from market presence through to relationship and knowledge capital, and where the delivery stages intersect with it. |
-| [delivery-portfolio-management.md](delivery-portfolio-management.md) | Portfolio-level objectives, roles, sales and delivery alignment measures, cross-engagement measures, flow management (managed queues, WIP limits, aging thresholds, and lead-time distributions), closure measures, the financial view (bill-to-cash pipeline and revenue at risk), delivery-led sales signals, and portfolio cadences. |
-| [stage-1-sales-to-delivery-transition.md](stage-1-sales-to-delivery-transition.md) | Gate 1 criteria, roles, transition meeting, the Delivery Handover Record, deal to delivery vehicle profiling variables and re-profiling triggers, and per-engagement Stage 1 metrics. |
+| [delivery-portfolio-management.md](delivery-portfolio-management.md) | Portfolio-level objectives, roles, the delegation of authority table (decision bands between Delivery Owner, Delivery Director, and Managing Director), the consolidated standing forums (Portfolio Health Review, Capacity Review, Commercial Health Review, and the quarterly Calibration Block), sales and delivery alignment measures, cross-engagement measures, flow management (managed queues, WIP limits, aging thresholds, and lead-time distributions), closure measures, the financial view (bill-to-cash pipeline and revenue at risk), delivery-led sales signals (CCO-chaired), the quarterly Win Review of won deals against framework performance, and portfolio cadences. |
+| [stage-1-sales-to-delivery-transition.md](stage-1-sales-to-delivery-transition.md) | Gate 1 criteria, roles, the transition meeting, risk identification and conditional acceptance, the Deal Quality at Handover score, the Delivery Handover Record, deal to delivery vehicle profiling variables (including pre-signature profiling on threshold deals, the profiler-becomes-Delivery-Owner accountability, and Practice or Technical Lead solution design co-sign on threshold deals) and re-profiling triggers, and per-engagement Stage 1 metrics. |
 | [stage-2-project-engagement-delivery.md](stage-2-project-engagement-delivery.md) | Delivery cadence, engagement health scoring, vehicle-specific leading indicators (fixed-price cost-to-complete/EAC, T&M funding/PO runway), scope and change management, Recovery and Exception management, methodology interface guidance mapping each delivery vehicle to its governance cadence, the early termination/partial closure route through Gate 2, workforce and utilisation guidance, and Stage 2 metrics. |
 | [stage-3-delivery-closure.md](stage-3-delivery-closure.md) | Gate 2 criteria, client closure meeting, internal retrospective, practitioner transition planning, the Closure Acknowledgement and its timeboxed escalation route, early termination and partial closure, and Stage 3 metrics. |
 | [stage-4-delivery-to-finance-transition.md](stage-4-delivery-to-finance-transition.md) | Gate 3 criteria, timesheet reconciliation, revenue recognition review, retention management, the Finance Handover Record, and Stage 4 metrics. |
@@ -51,7 +51,7 @@ See: [professional-services-value-chain.md](professional-services-value-chain.md
 
 ## Stage 1: Sales to Delivery Transition
 
-This stage ensures everything learned during the sales process is captured and handed to the delivery team before work begins. It covers Gate 1 criteria, roles, the transition meeting, risk identification, team composition, the Delivery Handover Record, deal to delivery vehicle profiling variables and the re-profiling triggers that keep that profile current mid-engagement, and the full Stage 1 metric set including timing, capability, alignment, and capacity.
+This stage ensures everything learned during the sales process is captured and handed to the delivery team before work begins. It covers Gate 1 criteria, roles, the transition meeting, risk identification and conditional acceptance, team composition, the Delivery Handover Record and Deal Quality at Handover score, deal to delivery vehicle profiling variables (including pre-signature profiling on threshold deals) and the re-profiling triggers that keep that profile current mid-engagement, and the full Stage 1 metric set including timing, capability, alignment, and capacity.
 
 See: [stage-1-sales-to-delivery-transition.md](stage-1-sales-to-delivery-transition.md)
 
@@ -86,8 +86,10 @@ See: [stage-4-delivery-to-finance-transition.md](stage-4-delivery-to-finance-tra
 | Element | Owner | Review frequency |
 |---|---|---|
 | Framework design and updates | Delivery Director | Annually or on major organisational change |
+| Win Review (standing input to the annual framework design review; co-scheduled within the quarterly Calibration Block) | Delivery Director + CCO | Quarterly |
 | Portfolio metrics dashboard | Delivery Director | Monthly |
-| Workforce review | Resource Manager + Practice Lead | Monthly |
+| Workforce Review | Resource Manager + Practice Lead | Monthly |
+| Delegation of Authority (decision bands; value thresholds set annually from the business plan) | Delivery Director | Annually, alongside the business plan |
 
 ### Per-Engagement Governance
 

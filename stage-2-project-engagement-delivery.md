@@ -24,7 +24,7 @@ Maintain visibility, support the workforce, and keep client relationships health
 | Practice Lead | Workforce planning, skills escalation, and delivery quality support |
 | Finance Partner | Tracks actuals against forecast, flags revenue risk |
 | Resource Manager | Manages allocation across engagements, surfaces utilisation risks |
-| Delivery Director | Holds decision authority for Recovery and Exception reviews; approves commercial concessions, scope renegotiation, write-offs, or early termination |
+| Delivery Director | Holds decision authority for Recovery and Exception reviews above the Delivery Owner's band; approves commercial concessions, scope renegotiation, write-offs, or early termination up to their own band, escalating above it to the Managing Director |
 
 ---
 
@@ -83,14 +83,16 @@ Most engagements never need this section. It exists for the minority that move f
 - The client signals an intention to reduce funding, reduce scope, or not renew a PO, for a T&M engagement
 - The Delivery Owner or Finance Partner requests an Exception Review directly, regardless of whether a formal threshold has been crossed
 
-**Convening.** The Delivery Owner notifies the Delivery Director within 2 business days of a trigger condition being met. The Delivery Director convenes an Exception Review within 5 business days of notification, with the Finance Partner and, where there are workforce implications, the Practice Lead. This is an internal decision forum and precedes, rather than replaces, the client conversation that follows from it.
+**Convening.** An Exception Review is convened when a trigger condition above is met, or when a decision is needed that sits above the Delivery Owner's band in the delegation table (see delivery-portfolio-management.md, Delegation of Authority). The Delivery Owner notifies the Delivery Director within 2 business days of a trigger condition being met, or raises the need for a decision above their band directly. The Delivery Director convenes an Exception Review within 5 business days of notification, with the Finance Partner and, where there are workforce implications, the Practice Lead. This is an internal decision forum and precedes, rather than replaces, the client conversation that follows from it.
 
-**Decision rights.** The Delivery Director holds explicit authority, above the Delivery Owner, to:
+**Decision rights.** Decision rights for commercial concessions, write-offs, scope renegotiation, and early termination follow the three-band delegation structure set out in delivery-portfolio-management.md, Delegation of Authority: a Delivery Owner may approve a commercial concession or write-off within the lowest band directly, without convening an Exception Review, provided it is logged in the Engagement Health Register. Above that band, the Delivery Director holds explicit authority, above the Delivery Owner, to:
 
 - Approve a commercial concession (discount, fee cap, or absorbed cost)
 - Approve a renegotiated scope, including a documented partial delivery
 - Approve a write-off of unrecoverable cost
 - Approve early termination of the engagement
+
+Above the Delivery Director's band, or for a strategic account, these decisions escalate to the Managing Director, with the Finance Partner informing the decision. The commercial value thresholds that define each band are set annually from the business plan, not by this framework (see Delegation of Authority).
 
 This authority sits with the Delivery Director because these decisions carry commercial and relationship consequences beyond what a single Delivery Owner should be expected to carry alone, and because a Delivery Owner mid-engagement has a structural incentive to keep a rating at Amber rather than call it Red. The Exception Review takes that judgement call out of one person's hands without removing the Delivery Owner's day-to-day accountability for the engagement.
 
@@ -106,7 +108,7 @@ The framework sits above delivery methodology; it does not replace it. Its gover
 
 How that plays out depends on the delivery vehicle established at Gate 1 (see Stage 1: Deal to Delivery Vehicle Profiling).
 
-**Structured project (Waterfall/PRINCE2-style).** Client-mandated stage boundaries stand in place of an internally invented cadence. The fortnightly health check references the methodology's own status artefacts — a Highlight Report, a RAID log — as evidence, rather than re-deriving a parallel view. Where the client runs a Project Board, the Delivery Director, not the Delivery Owner alone, represents the firm at Board-level escalation. The Recovery and Exception Review feeds into Board reporting; it does not run alongside it as a separate track.
+**Structured project (Waterfall/PRINCE2-style).** Client-mandated stage boundaries stand in place of an internally invented cadence. The fortnightly health check references the methodology's own status artefacts — a Highlight Report, a RAID log — as evidence, rather than re-deriving a parallel view. Where the client runs a Project Board, representation follows the delegation table in delivery-portfolio-management.md (Delegation of Authority): a senior Delivery Owner, not the engagement's own, represents the firm while the engagement is Green or Amber; the Delivery Director represents the firm directly once the engagement is Red-status or is a threshold engagement. The Recovery and Exception Review feeds into Board reporting; it does not run alongside it as a separate track.
 
 **Advisory or consulting model.** These engagements typically carry no heavy methodology of their own. In practice, the monthly client business review often functions as the primary governance point. Given the engagement's lower complexity profile, the fortnightly internal health check can run at reduced formality — a brief written rationale against each dimension is sufficient evidence. This is a right-sizing of the check, not licence to skip it.
 

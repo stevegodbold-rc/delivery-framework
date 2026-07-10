@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Six-Month Cadence Timeline — Delivery Framework</title>
+</head>
+<body>
+<style>
+  :root{
+    --ink:#17212b;
+    --paper:#eef1f0;
+    --panel:#ffffff;
+    --line:#c7d0ce;
+    --muted:#55635f;
+    --do:#0f6e64;        /* Delivery Owner */
+    --do-soft:#d3e9e6;
+    --dd:#31567f;        /* Delivery Director */
+    --dd-soft:#dbe5ef;
+    --plrm:#7a5a9e;      /* Practice Lead + Resource Manager */
+    --plrm-soft:#e7ddf1;
+    --cco:#a8632f;       /* CCO */
+    --cco-soft:#f2e2d3;
+    --trig:#a8402f;      /* As-triggered */
+    --trig-soft:#f1dcd6;
+    --shadow: 0 1px 2px rgba(23,33,43,0.06);
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --ink:#e7ece9; --paper:#121917; --panel:#182220; --line:#2c3835; --muted:#9fb0ab;
+      --do:#3fb3a4; --do-soft:#1d3634;
+      --dd:#7aa5d4; --dd-soft:#1e2b3a;
+      --plrm:#b294d6; --plrm-soft:#2c2438;
+      --cco:#d99a5e; --cco-soft:#382a1c;
+      --trig:#d9695c; --trig-soft:#3a201c;
+      --shadow: 0 1px 3px rgba(0,0,0,0.4);
+    }
+  }
+  :root[data-theme="dark"]{
+    --ink:#e7ece9; --paper:#121917; --panel:#182220; --line:#2c3835; --muted:#9fb0ab;
+    --do:#3fb3a4; --do-soft:#1d3634;
+    --dd:#7aa5d4; --dd-soft:#1e2b3a;
+    --plrm:#b294d6; --plrm-soft:#2c2438;
+    --cco:#d99a5e; --cco-soft:#382a1c;
+    --trig:#d9695c; --trig-soft:#3a201c;
+    --shadow: 0 1px 3px rgba(0,0,0,0.4);
+  }
+  :root[data-theme="light"]{
+    --ink:#17212b; --paper:#eef1f0; --panel:#ffffff; --line:#c7d0ce; --muted:#55635f;
+    --do:#0f6e64; --do-soft:#d3e9e6;
+    --dd:#31567f; --dd-soft:#dbe5ef;
+    --plrm:#7a5a9e; --plrm-soft:#e7ddf1;
+    --cco:#a8632f; --cco-soft:#f2e2d3;
+    --trig:#a8402f; --trig-soft:#f1dcd6;
+    --shadow: 0 1px 2px rgba(23,33,43,0.06);
+  }
+
+  *{box-sizing:border-box;}
+  body{margin:0; background:var(--paper); color:var(--ink);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; line-height:1.45;}
+  .wrap{max-width:1500px; margin:0 auto; padding:2.5rem 2rem 4rem;}
+
+  .eyebrow{font-family: ui-monospace, Consolas, monospace; font-size:0.72rem; letter-spacing:0.12em;
+    text-transform:uppercase; color:var(--dd); font-weight:600; margin:0 0 0.6rem;}
+  h1{font-size:clamp(1.6rem,2.6vw,2.15rem); margin:0 0 0.5rem; font-weight:700; letter-spacing:-0.01em; text-wrap:balance;}
+  .lede{max-width:64ch; color:var(--muted); font-size:1rem; margin:0 0 1.5rem;}
+
+  .legend{display:flex; flex-wrap:wrap; gap:1rem 1.6rem; padding:0.85rem 1.1rem;
+    border:1px solid var(--line); border-radius:8px; background:var(--panel);
+    box-shadow:var(--shadow); margin-bottom:1.5rem; font-size:0.8rem; color:var(--muted);}
+  .legend-item{display:flex; align-items:center; gap:0.45rem;}
+  .dot{width:12px; height:12px; border-radius:50%; flex:none; display:inline-block;}
+  .dot.big{width:16px; height:16px; border-radius:4px;}
+
+  .grid-frame{overflow-x:auto; border:1px solid var(--line); border-radius:10px;
+    background:var(--panel); box-shadow:var(--shadow); padding:1.25rem 1rem 1rem; margin-bottom:2.5rem;}
+  table.cal{border-collapse:collapse; min-width:1180px; width:100%;}
+  table.cal th, table.cal td{border:none; padding:0;}
+  table.cal thead th{font-family: ui-monospace, Consolas, monospace; font-size:0.7rem;
+    letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); font-weight:600;
+    padding:0.3rem 0.2rem; text-align:center; border-bottom:1px solid var(--line);}
+  table.cal thead th.rowhead{text-align:left; width:270px;}
+  table.cal thead tr.fortnights th{font-size:0.6rem; color:var(--muted); border-bottom:1px solid var(--line); padding-bottom:0.45rem;}
+  table.cal tbody th{font-size:0.8rem; font-weight:600; text-align:left; padding:0.45rem 0.6rem 0.45rem 0.2rem;
+    color:var(--ink); white-space:nowrap;}
+  table.cal tbody th .who{display:block; font-size:0.66rem; font-weight:500; color:var(--muted);}
+  table.cal tbody td{text-align:center; padding:0.45rem 0.2rem; border-left:1px dashed var(--line);}
+  table.cal tbody tr:nth-child(even){background:color-mix(in srgb, var(--line) 12%, transparent);}
+  table.cal tbody tr.tier-break td, table.cal tbody tr.tier-break th{border-top:1px solid var(--line);}
+  .mark{width:12px; height:12px; border-radius:50%; display:inline-block;}
+  .mark.block{width:18px; height:14px; border-radius:4px;}
+  .mark.ghost{width:12px; height:12px; border-radius:50%; display:inline-block; border:1.5px dashed var(--trig); background:transparent;}
+  .bar-trig{height:8px; border-radius:4px; background:repeating-linear-gradient(45deg, var(--trig-soft), var(--trig-soft) 6px, transparent 6px, transparent 12px);
+    border:1px dashed var(--trig); margin:0 0.15rem;}
+  .tier-label{font-family: ui-monospace, Consolas, monospace; font-size:0.62rem; letter-spacing:0.1em;
+    text-transform:uppercase; color:var(--muted); text-align:left !important; padding-top:0.9rem !important;}
+
+  h2{font-size:1.05rem; margin:2.2rem 0 0.9rem; font-weight:700;}
+  .cards{display:grid; grid-template-columns:repeat(auto-fit, minmax(340px, 1fr)); gap:1rem;}
+  .card{border:1px solid var(--line); border-radius:10px; background:var(--panel);
+    box-shadow:var(--shadow); padding:1rem 1.1rem; border-top:3px solid var(--line);
+    display:flex; flex-direction:column; gap:0.55rem;}
+  .card h3{margin:0; font-size:0.95rem; font-weight:700; display:flex; align-items:center; gap:0.5rem; flex-wrap:wrap;}
+  .chip{font-family: ui-monospace, Consolas, monospace; font-size:0.62rem; letter-spacing:0.06em;
+    text-transform:uppercase; font-weight:600; padding:0.15rem 0.5rem; border-radius:999px; white-space:nowrap;}
+  .card dl{margin:0; display:grid; grid-template-columns:auto 1fr; gap:0.3rem 0.75rem; font-size:0.8rem;}
+  .card dt{font-family: ui-monospace, Consolas, monospace; font-size:0.62rem; letter-spacing:0.08em;
+    text-transform:uppercase; color:var(--muted); font-weight:600; padding-top:0.15rem; white-space:nowrap;}
+  .card dd{margin:0; color:var(--ink);}
+  .card dd .sub{color:var(--muted);}
+
+  .card.c-do{border-top-color:var(--do);} .card.c-do .chip{background:var(--do-soft); color:var(--do);}
+  .card.c-dd{border-top-color:var(--dd);} .card.c-dd .chip{background:var(--dd-soft); color:var(--dd);}
+  .card.c-plrm{border-top-color:var(--plrm);} .card.c-plrm .chip{background:var(--plrm-soft); color:var(--plrm);}
+  .card.c-cco{border-top-color:var(--cco);} .card.c-cco .chip{background:var(--cco-soft); color:var(--cco);}
+  .card.c-trig{border-top-color:var(--trig);} .card.c-trig .chip{background:var(--trig-soft); color:var(--trig);}
+
+  footer{margin-top:2.5rem; font-size:0.78rem; color:var(--muted); border-top:1px solid var(--line); padding-top:1rem; max-width:75ch;}
+</style>
+
+<div class="wrap">
+  <p class="eyebrow">Delivery Management Framework — Operating Rhythm</p>
+  <h1>Six-month cadence timeline</h1>
+  <p class="lede">Every standing forum in the consolidated governance structure, mapped across a six-month window. Dots mark occurrences; the detail cards below give each forum's leadership, participants, focus, metrics, and expected outcomes.</p>
+
+  <div class="legend">
+    <div class="legend-item"><span class="dot" style="background:var(--do);"></span> Delivery Owner leads</div>
+    <div class="legend-item"><span class="dot" style="background:var(--dd);"></span> Delivery Director leads</div>
+    <div class="legend-item"><span class="dot" style="background:var(--plrm);"></span> Practice Lead / Resource Manager lead</div>
+    <div class="legend-item"><span class="dot" style="background:var(--cco);"></span> CCO leads</div>
+    <div class="legend-item"><span class="dot big" style="background:var(--dd);"></span> Quarterly half-day block</div>
+    <div class="legend-item"><span class="mark ghost"></span> As triggered, not scheduled</div>
+  </div>
+
+  <div class="grid-frame">
+    <table class="cal">
+      <thead>
+        <tr>
+          <th class="rowhead" rowspan="2">Forum</th>
+          <th colspan="2">Month 1</th><th colspan="2">Month 2</th><th colspan="2">Month 3</th>
+          <th colspan="2">Month 4</th><th colspan="2">Month 5</th><th colspan="2">Month 6</th>
+        </tr>
+        <tr class="fortnights">
+          <th>F1</th><th>F2</th><th>F1</th><th>F2</th><th>F1</th><th>F2</th>
+          <th>F1</th><th>F2</th><th>F1</th><th>F2</th><th>F1</th><th>F2</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><th class="tier-label" colspan="13">Per-engagement</th></tr>
+        <tr class="tier-break">
+          <th>Delivery Health Check<span class="who">Delivery Owner · fortnightly</span></th>
+          <td><span class="mark" style="background:var(--do);"></span></td><td><span class="mark" style="background:var(--do);"></span></td>
+          <td><span class="mark" style="background:var(--do);"></span></td><td><span class="mark" style="background:var(--do);"></span></td>
+          <td><span class="mark" style="background:var(--do);"></span></td><td><span class="mark" style="background:var(--do);"></span></td>
+          <td><span class="mark" style="background:var(--do);"></span></td><td><span class="mark" style="background:var(--do);"></span></td>
+          <td><span class="mark" style="background:var(--do);"></span></td><td><span class="mark" style="background:var(--do);"></span></td>
+          <td><span class="mark" style="background:var(--do);"></span></td><td><span class="mark" style="background:var(--do);"></span></td>
+        </tr>
+        <tr>
+          <th>Client Business Review<span class="who">Delivery Owner · monthly, per client</span></th>
+          <td></td><td><span class="mark" style="background:var(--do);"></span></td>
+          <td></td><td><span class="mark" style="background:var(--do);"></span></td>
+          <td></td><td><span class="mark" style="background:var(--do);"></span></td>
+          <td></td><td><span class="mark" style="background:var(--do);"></span></td>
+          <td></td><td><span class="mark" style="background:var(--do);"></span></td>
+          <td></td><td><span class="mark" style="background:var(--do);"></span></td>
+        </tr>
+
+        <tr><th class="tier-label" colspan="13">Portfolio — monthly</th></tr>
+        <tr class="tier-break">
+          <th>Portfolio Health Review<span class="who">Delivery Director · monthly</span></th>
+          <td><span class="mark" style="background:var(--dd);"></span></td><td></td>
+          <td><span class="mark" style="background:var(--dd);"></span></td><td></td>
+          <td><span class="mark" style="background:var(--dd);"></span></td><td></td>
+          <td><span class="mark" style="background:var(--dd);"></span></td><td></td>
+          <td><span class="mark" style="background:var(--dd);"></span></td><td></td>
+          <td><span class="mark" style="background:var(--dd);"></span></td><td></td>
+        </tr>
+        <tr>
+          <th>Capacity Review<span class="who">Delivery Director · monthly</span></th>
+          <td><span class="mark" style="background:var(--dd);"></span></td><td></td>
+          <td><span class="mark" style="background:var(--dd);"></span></td><td></td>
+          <td><span class="mark" style="background:var(--dd);"></span></td><td></td>
+          <td><span class="mark" style="background:var(--dd);"></span></td><td></td>
+          <td><span class="mark" style="background:var(--dd);"></span></td><td></td>
+          <td><span class="mark" style="background:var(--dd);"></span></td><td></td>
+        </tr>
+        <tr>
+          <th>Commercial Health Review<span class="who">Delivery Director + Finance Partner · monthly</span></th>
+          <td></td><td><span class="mark" style="background:var(--dd);"></span></td>
+          <td></td><td><span class="mark" style="background:var(--dd);"></span></td>
+          <td></td><td><span class="mark" style="background:var(--dd);"></span></td>
+          <td></td><td><span class="mark" style="background:var(--dd);"></span></td>
+          <td></td><td><span class="mark" style="background:var(--dd);"></span></td>
+          <td></td><td><span class="mark" style="background:var(--dd);"></span></td>
+        </tr>
+        <tr>
+          <th>Workforce Review<span class="who">Practice Lead + Resource Manager · monthly</span></th>
+          <td></td><td><span class="mark" style="background:var(--plrm);"></span></td>
+          <td></td><td><span class="mark" style="background:var(--plrm);"></span></td>
+          <td></td><td><span class="mark" style="background:var(--plrm);"></span></td>
+          <td></td><td><span class="mark" style="background:var(--plrm);"></span></td>
+          <td></td><td><span class="mark" style="background:var(--plrm);"></span></td>
+          <td></td><td><span class="mark" style="background:var(--plrm);"></span></td>
+        </tr>
+        <tr>
+          <th>Delivery-Led Sales Review<span class="who">CCO · monthly (Delivery Director quarterly)</span></th>
+          <td><span class="mark" style="background:var(--cco);"></span></td><td></td>
+          <td><span class="mark" style="background:var(--cco);"></span></td><td></td>
+          <td><span class="mark" style="background:var(--cco); outline:2px solid var(--dd); outline-offset:1.5px;"></span></td><td></td>
+          <td><span class="mark" style="background:var(--cco);"></span></td><td></td>
+          <td><span class="mark" style="background:var(--cco);"></span></td><td></td>
+          <td><span class="mark" style="background:var(--cco); outline:2px solid var(--dd); outline-offset:1.5px;"></span></td><td></td>
+        </tr>
+
+        <tr><th class="tier-label" colspan="13">Quarterly</th></tr>
+        <tr class="tier-break">
+          <th>Quarterly Calibration Block<span class="who">Delivery Director · half-day, three segments</span></th>
+          <td></td><td></td><td></td><td></td><td></td>
+          <td><span class="mark block" style="background:var(--dd);"></span></td>
+          <td></td><td></td><td></td><td></td><td></td>
+          <td><span class="mark block" style="background:var(--dd);"></span></td>
+        </tr>
+
+        <tr><th class="tier-label" colspan="13">As triggered</th></tr>
+        <tr class="tier-break">
+          <th>Exception Review<span class="who">Delivery Director · within 5 days of trigger, fortnightly while open</span></th>
+          <td colspan="12"><div class="bar-trig" title="Convened on trigger conditions, not scheduled"></div></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Forum detail</h2>
+  <div class="cards">
+
+    <div class="card c-do">
+      <h3>Delivery Health Check <span class="chip">Fortnightly</span></h3>
+      <dl>
+        <dt>Leads</dt><dd>Delivery Owner</dd>
+        <dt>Attends</dt><dd>Practice Lead</dd>
+        <dt>Focus</dt><dd>Five health dimensions with written rationale; vehicle-specific evidence (EAC check for fixed-price, funding/PO runway for T&amp;M); methodology artefacts consumed as evidence, not duplicated</dd>
+        <dt>Metrics</dt><dd>Health score (G/A/R by dimension), cost-to-complete/EAC variance, funding/PO runway, scope change velocity, unagreed scope drift</dd>
+        <dt>Outcomes</dt><dd>Risks surfaced before they are client-visible; Recovery and Exception triggers detected; Engagement Health Register entry logged</dd>
+      </dl>
+    </div>
+
+    <div class="card c-do">
+      <h3>Client Business Review <span class="chip">Monthly · per client</span></h3>
+      <dl>
+        <dt>Leads</dt><dd>Delivery Owner</dd>
+        <dt>Attends</dt><dd>Client sponsor</dd>
+        <dt>Focus</dt><dd>Relationship health, delivery progress, risks, forward planning</dd>
+        <dt>Metrics</dt><dd>Completion rate (target 100%); stakeholder sentiment; relationship layers</dd>
+        <dt>Outcomes</dt><dd>Expectations aligned continuously rather than at crisis points; early relationship risk signals; expansion signals logged to CRM</dd>
+      </dl>
+    </div>
+
+    <div class="card c-dd">
+      <h3>Portfolio Health Review <span class="chip">Monthly · anchor forum</span></h3>
+      <dl>
+        <dt>Leads</dt><dd>Delivery Director (chair)</dd>
+        <dt>Attends</dt><dd>All Delivery Owners, Practice Lead, Resource Manager</dd>
+        <dt>Focus</dt><dd>Cross-portfolio health distribution, workforce pressure, concentration risk; WIP ceilings and capacity trade-offs; queue review (handoff, Recovery &amp; Exception aging)</dd>
+        <dt>Metrics</dt><dd>Health distribution (% G/A/R), engagements in Recovery &amp; Exception + days in status, engagement load vs. ceiling per Delivery Owner, handoff queue length, review completion rates</dd>
+        <dt>Outcomes</dt><dd>Explicit trade-off decisions at WIP ceilings; Project Board representation assigned; concentration risks named and owned</dd>
+      </dl>
+    </div>
+
+    <div class="card c-dd">
+      <h3>Capacity Review <span class="chip">Monthly · two segments</span></h3>
+      <dl>
+        <dt>Leads</dt><dd>Delivery Director</dd>
+        <dt>Attends</dt><dd>Resource Manager, Sales Lead, Practice Lead</dd>
+        <dt>Focus</dt><dd><span class="sub">Segment 1:</span> demand reconciliation — weighted pipeline vs. available and planned capacity. <span class="sub">Segment 2:</span> workforce response — hiring lead times vs. forecast demand, skilling priorities, requisition queue</dd>
+        <dt>Metrics</dt><dd>Deal stage forecast, lead times close-to-start and advertise-to-ready (p50/p85), available/scheduled hours, remaining capacity vs. buffer, open requisitions vs. WIP limit, aged requisitions</dd>
+        <dt>Outcomes</dt><dd>Hiring decisions committed ahead of demand (advertise-to-ready lead time honoured); skilling investment prioritised; requisition limits held or explicitly raised</dd>
+      </dl>
+    </div>
+
+    <div class="card c-dd">
+      <h3>Commercial Health Review <span class="chip">Monthly · three segments</span></h3>
+      <dl>
+        <dt>Leads</dt><dd>Delivery Director + Finance Partner (co-owned)</dd>
+        <dt>Attends</dt><dd>Practice Lead (closure segment only)</dd>
+        <dt>Focus</dt><dd><span class="sub">Segment 1:</span> forecast and bill-to-cash. <span class="sub">Segment 2:</span> retention schedule. <span class="sub">Segment 3:</span> closure health patterns</dd>
+        <dt>Metrics</dt><dd>Forecast-to-actual variance, revenue at risk (Amber/Red), DSO, milestone billings due 30 days, invoices unpaid beyond terms, retentions held and release rate, disputed final invoices, closure completion rates, early termination rate, days to final invoice</dd>
+        <dt>Outcomes</dt><dd>Revenue risk acted on before it lands in the accounts; retention follow-ups owned and dated; closure process patterns remediated</dd>
+      </dl>
+    </div>
+
+    <div class="card c-plrm">
+      <h3>Workforce Review <span class="chip">Monthly</span></h3>
+      <dl>
+        <dt>Leads</dt><dd>Practice Lead + Resource Manager (co-owned; no Delivery Director)</dd>
+        <dt>Focus</dt><dd>Utilisation, bench and resource-gap queues, allocation gaps, skilling investment priorities, elasticity signals</dd>
+        <dt>Metrics</dt><dd>Billable utilisation (rolling 4-week), bench time by practitioner and bench queue as % of headcount, resource gap queue length and aging (&gt;10 business days), skilling gaps identified vs. resolved</dd>
+        <dt>Outcomes</dt><dd>Allocation decisions made through conversation, not formula; aged gaps escalated; buffer sizing revisited when the bench outgrows Remaining Capacity</dd>
+      </dl>
+    </div>
+
+    <div class="card c-cco">
+      <h3>Delivery-Led Sales Review <span class="chip">Monthly · CCO chair</span></h3>
+      <dl>
+        <dt>Leads</dt><dd>Chief Customer Officer</dd>
+        <dt>Attends</dt><dd>Sales Lead; Delivery Director quarterly (contributor)</dd>
+        <dt>Focus</dt><dd>Relationship depth, scope evolution signals, expansion readiness across the active portfolio; account planning actions</dd>
+        <dt>Metrics</dt><dd>Active relationships by layer, stakeholder sentiment, follow-on opportunities in CRM (% of active engagements), client-initiated scope additions by delivery vehicle, declined/deferred requests</dd>
+        <dt>Outcomes</dt><dd>Delivery-sourced demand signals converted into pipeline; leakage from unlogged out-of-scope requests closed</dd>
+      </dl>
+    </div>
+
+    <div class="card c-dd">
+      <h3>Quarterly Calibration Block <span class="chip">Quarterly · half-day</span></h3>
+      <dl>
+        <dt>Leads</dt><dd>Delivery Director</dd>
+        <dt>Attends</dt><dd>Finance Partner, Sales Lead, Practice Lead, CCO — by segment</dd>
+        <dt>Focus</dt><dd><span class="sub">Segment 1:</span> health-to-billing calibration. <span class="sub">Segment 2:</span> alignment health check, including deal quality correlation and estimate-vs-actual solution design variance on threshold deals. <span class="sub">Segment 3:</span> Win Review — 2-4 won deals walked end-to-end against the framework's own record (co-owned with CCO)</dd>
+        <dt>Metrics</dt><dd>% disputed invoices and extended-DSO engagements preceded by Amber/Red commercial health; revenue-at-risk probability weightings; T-shape density, core skill %, pipeline alignment %; Deal Quality at Handover aggregation and downstream correlation</dd>
+        <dt>Outcomes</dt><dd>Probability weightings recalibrated against evidence; structural sales/delivery drift surfaced; framework improvement opportunities fed to the annual design review; cross-boundary observations to sales and practice leadership</dd>
+      </dl>
+    </div>
+
+    <div class="card c-trig">
+      <h3>Exception Review <span class="chip">As triggered</span></h3>
+      <dl>
+        <dt>Leads</dt><dd>Delivery Director (convenes within 5 business days of notification)</dd>
+        <dt>Attends</dt><dd>Delivery Owner, Finance Partner, Practice Lead (where workforce implications)</dd>
+        <dt>Focus</dt><dd>Decisions on troubled engagements per the Delegation of Authority bands: concessions, scope renegotiation, write-offs, early termination. Fortnightly follow-up while open</dd>
+        <dt>Metrics</dt><dd>Trigger evidence: Red sustained two fortnights, EAC below threshold (fixed-price), funding/PO runway signal (T&amp;M), or above-band decision required</dd>
+        <dt>Outcomes</dt><dd>Exception Decision Record; band-appropriate decision made by the right authority; alternate Gate 2 route invoked where termination or partial closure is agreed</dd>
+      </dl>
+    </div>
+
+  </div>
+
+  <footer>
+    Timing within each month is indicative — the framework fixes frequency and participation, not calendar position; fortnight placement here suggests a workable spread (portfolio and capacity early in the month feeding the commercial review later). The annual framework design review (Delivery Director, fed by Win Review outputs) falls outside this six-month window. Source: delivery-portfolio-management.md — Standing Forums, Delegation of Authority; stage-1 through stage-4 cadence tables.
+  </footer>
+</div>
+
+</body>
+</html>
