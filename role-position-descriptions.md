@@ -18,7 +18,9 @@ Owns the portfolio-level view of delivery health across the organisation. Accoun
 - Chairs the monthly Portfolio Health Review; owns the portfolio view across all active engagements
 - Reviews cross-portfolio health distribution, workforce pressure, and concentration risk
 - Sets and revisits the complexity-weighted engagement WIP ceiling for each Delivery Owner at the monthly portfolio review, and makes the explicit capacity trade-off call when a Delivery Owner is at ceiling and a new engagement needs a home
+- Makes the account-aligned trade-off call when an existing account's growth approaches its incumbent Delivery Owner's ceiling: moves that Delivery Owner's other, smaller accounts to other Delivery Owners so the growing account stays whole, rather than splitting the growing account off to whoever has headroom
 - Owns the sales-to-delivery handoff queue and raises a growing queue at the Capacity Review as an early warning ahead of the lead-time distribution moving
+- Reviews, at the monthly Portfolio Health Review, any override of a computed engagement health rollup on a strategic-account engagement (see delivery-portfolio-management.md, Flow Management, for the working definition of a strategic account)
 
 *Recovery and Exception authority*
 - Holds decision authority, above the Delivery Owner's band, to approve commercial concessions, renegotiated scope (including documented partial delivery), write-offs of unrecoverable cost, and early termination, escalating above their own band, or for a strategic account, to the Managing Director (see delivery-portfolio-management.md, Delegation of Authority)
@@ -79,6 +81,7 @@ Owns workforce capability, skills strategy, and delivery quality support across 
 - On threshold deals, co-signs the solution design before proposal submission as Practice or Technical Lead — confirming the technical approach is sound, the team shape and estimate are credible, and the estimate's assumptions are recorded (in some organisations this accountability sits with a Technical Lead rather than the Practice Lead; the framework names both to reflect that without creating a second role)
 - Co-owns re-profiling with the Delivery Owner when a trigger condition is met (sponsor change, an invoked Exception Review, or material scope/duration extension)
 - Participates in the fortnightly delivery health check and joins the Exception Review where there are workforce implications
+- On strategic-account engagements (see delivery-portfolio-management.md, Flow Management, for the working definition), co-reviews the Delivery Owner's engagement health ratings at the fortnightly delivery health check — formalising, on these engagements, what the Practice Lead's existing attendance is for, rather than adding a meeting
 - Provides workforce planning, skills escalation, and delivery quality support across active engagements
 
 *Workforce and hiring management*

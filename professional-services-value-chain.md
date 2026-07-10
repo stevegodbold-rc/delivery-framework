@@ -170,7 +170,7 @@ The accumulated stock of client relationships, delivery knowledge, reputation, a
 
 **Reference and case study development.** The conversion of successful engagements into reusable market presence assets: case studies, references, testimonials, and speaker opportunities. This is the primary mechanism through which delivery performance compounds into market presence.
 
-**Knowledge capture and reuse.** The retention of delivery knowledge in a form that can be applied to future engagements. The delivery framework's retrospective and knowledge base entry at closure are the structured capture points. The Practice Lead's role in the portfolio management cadence ensures this knowledge flows into skilling and hiring decisions.
+**Knowledge capture and reuse.** The retention of delivery knowledge in a form that can be applied to future engagements. The delivery framework's retrospective and knowledge base entry at closure are the structured capture points, extended by event-driven knowledge notes at practitioner rotation, phase boundaries, and re-profiling, and paired with consumption points at Stage 1, solution design, Exception Review, and the Win Review so captured knowledge is also consulted, not only filed. The Practice Lead's role in the portfolio management cadence ensures this knowledge flows into skilling and hiring decisions. See [knowledge-management.md](knowledge-management.md) for the full treatment, including the reusable technical asset stream introduced there.
 
 **Delivery-led account development.** The identification and surfacing of follow-on opportunities within active client relationships, based on observations made during delivery. The delivery framework's delivery-led sales measures exist to make this systematic rather than incidental. A Delivery Owner who observes an unmet need and logs it in CRM is performing a value chain activity, not a sales one.
 
@@ -223,6 +223,7 @@ The boundary is intentional. A framework that attempts to govern the full value 
 | Stage 3: Delivery Closure | Link 4 → Link 5 handoff, Link 6 inputs |
 | Stage 4: Delivery to Finance Transition | Link 5 |
 | Delivery Portfolio Management | Link 2 alignment, Link 4 cross-engagement, Link 5 financial view, Link 6 delivery-led sales |
+| Knowledge Management | Link 4 knowledge creation, Link 6 knowledge capture and reuse |
 
 ---
 

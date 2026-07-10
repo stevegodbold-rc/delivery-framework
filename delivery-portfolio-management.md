@@ -29,7 +29,7 @@ The portfolio view is not a reporting layer on top of delivery. It is the mechan
 | Finance Partner | Provides the commercial view of the portfolio; tracks forecast-to-actual variance across engagements |
 | Sales Lead | Provides pipeline visibility; co-owns the sales and delivery alignment measures |
 | Chief Customer Officer (CCO) | Owns client maturity and long-term account health; chairs the Delivery-Led Sales Review; delivery-led sales measures are a shared input |
-| Delivery Owners | Contribute engagement-level health data; surface cross-portfolio dependencies, risks, and in-account growth signals |
+| Delivery Owners | Contribute engagement-level health data; surface cross-portfolio dependencies, risks, and in-account growth signals; maintain the Account Delivery Record for accounts they hold |
 
 ---
 
@@ -40,6 +40,8 @@ Stage 2's Recovery and Exception Management describes what the Delivery Director
 The table below defines the decisions in question and the bands that separate a Delivery Owner's authority from the Delivery Director's, and the Delivery Director's from the Managing Director's. It does not contain the values that define those bands. Consistent with this framework's principle that it does not set financial targets independently of the business plan, the commercial value thresholds referenced below — the point at which a concession or write-off moves from the Delivery Owner's band into the Delivery Director's, and from the Delivery Director's into the Managing Director's — are set annually from the business plan and recorded alongside it. This document deliberately does not set them.
 
 Two things follow from that structure. First, the lowest band gives the Delivery Owner real authority: small, low-risk commercial decisions no longer require convening an Exception Review, provided they are logged in the Engagement Health Register. This does not weaken the Recovery and Exception mechanism — the trigger conditions in Stage 2 are unchanged, and anything that meets a trigger, or that the Delivery Owner or Finance Partner is not comfortable deciding alone, still goes to an Exception Review regardless of value. It removes the requirement to convene a review for decisions genuinely small enough not to need one. Second, the Delivery Director's authority now has a stated upper bound: above the Delivery Director's band, or for a strategic account, the decision escalates to the Managing Director, with the Finance Partner informing that decision. This closes the gap this framework previously left open, where the Delivery Director's commercial authority was described without a ceiling.
+
+"Strategic account" is used throughout this table without being defined here. Its working definition lives in Flow Management, below, as a consequence of the account-aligned assignment pull policy: an account whose engagement load justifies most of one Delivery Owner's ceiling (see Flow Management > Managed Queues > Delivery Owner engagement load).
 
 | Decision | Within Delivery Owner band | Within Delivery Director band | Above Delivery Director band | Where decided | Where recorded |
 |---|---|---|---|---|---|
@@ -218,7 +220,7 @@ The portfolio already tracks utilisation, bench time, resource-gap fill time, an
 
 | Queue | What it is | Limit / aging threshold | Pull policy | Owner |
 |---|---|---|---|---|
-| Delivery Owner engagement load | Concurrent engagements held by each Delivery Owner, weighted by delivery vehicle complexity rather than counted flat | Complexity-weighted ceiling set per Delivery Owner at the monthly portfolio review | A Delivery Owner at their ceiling does not receive a new engagement without an explicit capacity trade-off decision at the portfolio review: something else moves, is delayed, or another Delivery Owner takes it | Delivery Director |
+| Delivery Owner engagement load | Concurrent engagements held by each Delivery Owner, weighted by delivery vehicle complexity rather than counted flat | Complexity-weighted ceiling set per Delivery Owner at the monthly portfolio review | A new engagement within an existing client account defaults to that account's incumbent Delivery Owner, not to whoever has headroom. A Delivery Owner at their ceiling does not receive a new engagement without an explicit capacity trade-off decision at the Portfolio Health Review: something else moves, is delayed, or another Delivery Owner takes it. Where the new engagement is growth within an existing account, the trade-off moves the Delivery Owner's other, smaller accounts to other Delivery Owners — the growing account stays whole | Delivery Director |
 | Resource gap queue | Concurrently open, unresolved resource gaps the Resource Manager is carrying | Gap open beyond 10 business days | Escalates to the Practice Lead | Resource Manager |
 | Bench queue | Practitioners without confirmed allocation, viewed as a queue rather than only as individual bench-time entries | Bench count as a % of total delivery headcount | Read alongside Remaining capacity; if the bench queue grows past what Remaining capacity was sized to absorb, the buffer sizing itself is treated as wrong and revisited, not the bench | Resource Manager |
 | Hiring requisition queue | Concurrent open requisitions per practice area | WIP limit on concurrent open requisitions per practice area; aging flag when a requisition exceeds the calibrated advertise-to-ready benchmark for its seniority band | Requisitions exceeding the practice area limit are not posted until an existing requisition closes or the limit is explicitly raised at the Capacity Review | Practice Lead |
@@ -227,9 +229,13 @@ The portfolio already tracks utilisation, bench time, resource-gap fill time, an
 
 **Delivery Owner engagement load.** The existing Active engagements per Delivery Owner metric tracks a count with no ceiling. Engagement weight is not a fixed point-scoring formula: a Phased Program or Structured Project engagement counts for more of a Delivery Owner's ceiling than a Lightweight or Advisory engagement, following the same profile categories set at Gate 1. The ceiling itself is set per Delivery Owner, not fixed globally, because leadership strength and engagement mix vary by person. It is agreed and revisited at the monthly portfolio review. Material pre-signature involvement on a threshold deal (see Stage 1: Pre-Signature Profiling on Threshold Deals) counts toward this ceiling in the same way as any other active commitment — it is real capacity spent, not invisible work sitting outside the queue.
 
+**Account-aligned assignment.** In a land-and-expand growth motion, an account outgrowing one Delivery Owner's ceiling is not an edge case to be managed around — it is the goal. A pull policy that assigns new engagements to whoever has headroom, without regard to which account they sit in, will eventually fragment a growing account's delivery view across several Delivery Owners at precisely the moment that account is succeeding. That is a policy breaking at its point of success, not a random failure. Account-aligned assignment closes that gap: a new engagement within an existing client account defaults to the incumbent account's Delivery Owner. The WIP limit still binds — a Delivery Owner does not get an unlimited pass because the work is in "their" account — but what moves when the ceiling is reached is different. Rather than splitting the growing account off to whoever else has capacity, the trade-off decision at the Portfolio Health Review moves that Delivery Owner's *other, smaller* accounts to other Delivery Owners. The growing account stays whole, and its Delivery Owner converges, engagement by engagement, toward being effectively dedicated to it.
+
+This is also where the framework gets a working definition of "strategic account" — used but left undefined in the Delegation of Authority table above: an account whose engagement load justifies most of one Delivery Owner's ceiling. It is a capacity-derived definition, not a revenue threshold set independently of delivery reality, and it moves with the account rather than being fixed once and forgotten.
+
 **Resource gap queue.** Time to fill open resource gaps is currently reported as an average, which hides how many gaps are open at once. The queue-length view — how many unresolved gaps the Resource Manager is carrying at a point in time — surfaces pressure the average cannot. A gap open beyond 10 business days, mirroring the existing bench-time threshold, escalates to the Practice Lead rather than sitting in the average indefinitely.
 
-**Bench queue.** Bench time by practitioner already carries a >10 business day aging threshold for individuals (see Stage 2: Workforce management). This adds a queue-level view — bench count as a % of total delivery headcount — read alongside, not instead of, Remaining capacity. The two measures are connected: Remaining capacity is the buffer sized to absorb variance, and the bench queue is what that buffer is actually absorbing. If the bench queue consistently outgrows what Remaining capacity was sized for, that is a signal the buffer threshold needs resizing, not that individual practitioners are the problem.
+**Bench queue.** Bench time by practitioner already carries a >10 business day aging threshold for individuals (see Stage 2: Workforce management). This adds a queue-level view — bench count as a % of total delivery headcount — read alongside, not instead of, Remaining capacity. The two measures are connected: Remaining capacity is the buffer sized to absorb variance, and the bench queue is what that buffer is actually absorbing. If the bench queue consistently outgrows what Remaining capacity was sized for, that is a signal the buffer threshold needs resizing, not that individual practitioners are the problem. The bench queue is also a natural pull source for bounded, valuable work such as knowledge curation (see knowledge-management.md, Ownership and Cadence) — a Resource Manager and Practice Lead decision, made the same way any other bench-queue allocation is made, not a mandatory assignment.
 
 **Hiring requisition queue.** Lead time: advertise to ready (p50 / p85) tells the organisation how long a requisition typically takes, and how long the slower tail takes. It does not show how many requisitions are open and competing for sourcing attention at once. A WIP limit on concurrent open requisitions per practice area keeps postings from queuing behind each other indefinitely, and an aging flag on any requisition exceeding the calibrated benchmark for its seniority band gives the Practice Lead an early view of which specific postings are stalling.
 
@@ -334,6 +340,8 @@ Revenue at risk is a probability-weighted view of commercial exposure in the act
 
 Delivery teams are in the room when the next opportunity is born. These measures create the habit of capturing that signal systematically. They are not sales metrics. They are delivery-sourced leading indicators of in-account growth potential, fed continuously into account planning via Delivery Owners' CRM logging, and reviewed formally at the Delivery-Led Sales Review.
 
+The measures below are captured per engagement. On a multi-engagement account, that is not the same view as the account's overall relationship and growth picture — see Account Delivery Record, below, for how the per-engagement signals are rolled up to the account level that the account-aligned Delivery Owner (see Flow Management > Managed Queues > Delivery Owner engagement load) now holds.
+
 Client maturity metrics are noted here for completeness but are more effectively owned by the CCO, who holds the broader account relationship view. The Delivery-Led Sales Review itself is chaired and owned by the CCO, consistent with that ownership: the CCO already owns client maturity and long-term account health elsewhere in this section, and consolidating chairing there removes a second monthly forum covering adjacent ground. The Delivery Director's role becomes contributor rather than chair, attending quarterly rather than monthly; the underlying delivery-sourced signal is not weakened by this, since it continues to flow into account planning monthly via Delivery Owners' CRM logging rather than depending on the Delivery Director's monthly attendance to surface it.
 
 ### Measures
@@ -354,6 +362,16 @@ Delivery relationships confined to a single layer of the client organisation are
 >
 > Client-initiated scope additions mean different things depending on delivery vehicle, and should not be read as one signal. On a T&M engagement, a rising rate of client-initiated additions that are logged, priced, and resourced is a healthy demand-expansion signal for account planning. On a fixed-price engagement, additions that are agreed and reflected in a revised forecast are the same healthy signal; additions that are absorbed informally without going through change control are not growth, they are unagreed scope drift and a commercial risk — tracked separately as such in the Cross-Engagement measures above and feeding the Recovery and Exception mechanism in Stage 2 if they push the cost-to-complete position past threshold.
 
+**Account Delivery Record**
+
+Account-aligned assignment (see Flow Management, above) gives a multi-engagement account a single accountable Delivery Owner across all of its engagements. That solves who owns the account picture. It does not, on its own, solve where that picture lives. If the relationship map, the sentiment history, and the open expansion signals exist only in that Delivery Owner's head, the firm has quietly created key-person risk on its most valuable accounts — the exact accounts a land-and-expand motion depends on most. The Account Delivery Record is the artifact that closes that gap: a per-account rollup, maintained by the account's Delivery Owner, that has to outlive any individual's tenure on the account.
+
+| Metric | Description | Type | Frequency | Owner |
+|---|---|---|---|---|
+| % of multi-engagement accounts with a current Account Delivery Record | % of accounts with more than one active engagement where the Account Delivery Record has been updated within the current month | Leading | Monthly | Delivery Owner |
+
+The Account Delivery Record is reviewed at the monthly Delivery-Led Sales Review alongside the per-engagement measures above. It does not replace per-engagement logging — the underlying data is still captured engagement by engagement — it is the account-level view built from that data, so that a change of Delivery Owner on the account is a handover of a record, not a loss of institutional memory.
+
 **Client maturity** *(CCO-owned)*
 
 Client maturity metrics — including engagement breadth across service types, net revenue per client, and multi-engagement client rate — are more effectively owned and reported by the CCO. The Delivery Director provides delivery-sourced inputs to these measures via the relationship depth and expansion readiness data above.
@@ -362,7 +380,7 @@ Client maturity metrics — including engagement breadth across service types, n
 
 | Review | Frequency | Participants | Purpose |
 |---|---|---|---|
-| Delivery-Led Sales Review | Monthly, chaired by the CCO | CCO (chair), Sales Lead, Delivery Director (quarterly attendance) | Review relationship depth, scope evolution signals, and expansion readiness across the active portfolio; align on account planning actions |
+| Delivery-Led Sales Review | Monthly, chaired by the CCO | CCO (chair), Sales Lead, Delivery Director (quarterly attendance) | Review relationship depth, scope evolution signals, and expansion readiness across the active portfolio; review the Account Delivery Record for each multi-engagement account; align on account planning actions |
 
 ---
 
@@ -441,6 +459,7 @@ Two distinct outputs, kept separate:
 | Active relationships by layer | Delivery-led sales | Leading | Monthly | Delivery Owner |
 | Stakeholder relationship sentiment | Delivery-led sales | Leading | Monthly | Delivery Owner |
 | Active follow-on opportunity in CRM as % of active engagements | Delivery-led sales | Leading | Monthly | Delivery Owner / Sales Lead |
+| % of multi-engagement accounts with a current Account Delivery Record | Delivery-led sales | Leading | Monthly | Delivery Owner |
 | Engagement health distribution (% Green / Amber / Red) | Cross-engagement | Leading | Fortnightly | Delivery Director |
 | Engagements in Recovery and Exception status | Cross-engagement | Leading | Fortnightly | Delivery Director |
 | Scope change velocity (by delivery vehicle) | Cross-engagement | Leading | Fortnightly | Delivery Director |

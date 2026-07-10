@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Knowledge Capture &amp; Consumption Map — Delivery Framework</title>
+</head>
+<body>
+<style>
+  :root{
+    --ink:#17212b;
+    --paper:#eef1f0;
+    --panel:#ffffff;
+    --line:#c7d0ce;
+    --muted:#55635f;
+    --client:#0f6e64;      /* client / account stream */
+    --client-soft:#d3e9e6;
+    --method:#31567f;      /* method stream */
+    --method-soft:#dbe5ef;
+    --estim:#7a5a9e;       /* estimation stream */
+    --estim-soft:#e7ddf1;
+    --comm:#a8632f;        /* commercial pattern stream */
+    --comm-soft:#f2e2d3;
+    --tech:#3f7d58;        /* technical / solution stream */
+    --tech-soft:#dceade;
+    --kb:#17212b;
+    --shadow: 0 1px 2px rgba(23,33,43,0.06);
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --ink:#e7ece9; --paper:#121917; --panel:#182220; --line:#2c3835; --muted:#9fb0ab;
+      --client:#3fb3a4; --client-soft:#1d3634;
+      --method:#7aa5d4; --method-soft:#1e2b3a;
+      --estim:#b294d6; --estim-soft:#2c2438;
+      --comm:#d99a5e; --comm-soft:#382a1c;
+      --tech:#5fae7d; --tech-soft:#1e3226;
+      --kb:#e7ece9;
+      --shadow: 0 1px 3px rgba(0,0,0,0.4);
+    }
+  }
+  :root[data-theme="dark"]{
+    --ink:#e7ece9; --paper:#121917; --panel:#182220; --line:#2c3835; --muted:#9fb0ab;
+    --client:#3fb3a4; --client-soft:#1d3634;
+    --method:#7aa5d4; --method-soft:#1e2b3a;
+    --estim:#b294d6; --estim-soft:#2c2438;
+    --comm:#d99a5e; --comm-soft:#382a1c;
+    --tech:#5fae7d; --tech-soft:#1e3226;
+    --kb:#e7ece9;
+    --shadow: 0 1px 3px rgba(0,0,0,0.4);
+  }
+  :root[data-theme="light"]{
+    --ink:#17212b; --paper:#eef1f0; --panel:#ffffff; --line:#c7d0ce; --muted:#55635f;
+    --client:#0f6e64; --client-soft:#d3e9e6;
+    --method:#31567f; --method-soft:#dbe5ef;
+    --estim:#7a5a9e; --estim-soft:#e7ddf1;
+    --comm:#a8632f; --comm-soft:#f2e2d3;
+    --tech:#3f7d58; --tech-soft:#dceade;
+    --kb:#17212b;
+    --shadow: 0 1px 2px rgba(23,33,43,0.06);
+  }
+
+  *{box-sizing:border-box;}
+  body{margin:0; background:var(--paper); color:var(--ink);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; line-height:1.45;}
+  .wrap{max-width:1500px; margin:0 auto; padding:2.5rem 2rem 4rem;}
+
+  .eyebrow{font-family: ui-monospace, Consolas, monospace; font-size:0.72rem; letter-spacing:0.12em;
+    text-transform:uppercase; color:var(--method); font-weight:600; margin:0 0 0.6rem;}
+  h1{font-size:clamp(1.6rem,2.6vw,2.15rem); margin:0 0 0.5rem; font-weight:700; letter-spacing:-0.01em; text-wrap:balance;}
+  .lede{max-width:66ch; color:var(--muted); font-size:1rem; margin:0 0 1.5rem;}
+
+  .legend{display:flex; flex-wrap:wrap; gap:1rem 1.6rem; padding:0.85rem 1.1rem;
+    border:1px solid var(--line); border-radius:8px; background:var(--panel);
+    box-shadow:var(--shadow); margin-bottom:1.5rem; font-size:0.8rem; color:var(--muted);}
+  .legend-item{display:flex; align-items:center; gap:0.45rem;}
+  .dot{width:12px; height:12px; border-radius:50%; flex:none; display:inline-block;}
+  .dot.multi{background:conic-gradient(var(--client) 0 72deg, var(--method) 72deg 144deg,
+    var(--estim) 144deg 216deg, var(--comm) 216deg 288deg, var(--tech) 288deg 360deg);}
+
+  .matrix-frame{overflow-x:auto; border:1px solid var(--line); border-radius:10px;
+    background:var(--panel); box-shadow:var(--shadow); padding:1.1rem 1rem 0.9rem; }
+  .matrix-frame h2{margin:0 0 0.2rem; font-size:0.95rem;}
+  .matrix-frame .sub{font-size:0.78rem; color:var(--muted); margin:0 0 0.75rem;}
+  table.mx{border-collapse:collapse; min-width:1080px; width:100%;}
+  table.mx th, table.mx td{padding:0;}
+  table.mx thead th{font-family: ui-monospace, Consolas, monospace; font-size:0.66rem;
+    letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); font-weight:600;
+    padding:0.35rem 0.4rem; text-align:center; border-bottom:1px solid var(--line);}
+  table.mx thead th.rowhead{text-align:left; width:300px;}
+  table.mx tbody th{font-size:0.8rem; font-weight:600; text-align:left;
+    padding:0.42rem 0.6rem 0.42rem 0.2rem; color:var(--ink);}
+  table.mx tbody th .who{display:block; font-size:0.65rem; font-weight:500; color:var(--muted);}
+  table.mx tbody td{text-align:center; padding:0.42rem 0.3rem; border-left:1px dashed var(--line); font-size:0.68rem; color:var(--muted);}
+  table.mx tbody tr:nth-child(even){background:color-mix(in srgb, var(--line) 12%, transparent);}
+  .mk{width:12px; height:12px; border-radius:50%; display:inline-block; vertical-align:middle;}
+  .mk.multi{background:conic-gradient(var(--client) 0 72deg, var(--method) 72deg 144deg,
+    var(--estim) 144deg 216deg, var(--comm) 216deg 288deg, var(--tech) 288deg 360deg);}
+  .mk + .mk{margin-left:3px;}
+  .note{font-size:0.63rem; font-family: ui-monospace, Consolas, monospace; display:block; margin-top:2px;}
+
+  .kb-band{margin:0; padding:1.1rem 1.4rem; border:1.5px solid var(--ink); border-radius:10px;
+    background:var(--panel); box-shadow:var(--shadow); position:relative;}
+  .kb-band h2{margin:0 0 0.15rem; font-size:1rem;}
+  .kb-band .sub{font-size:0.8rem; color:var(--muted); margin:0 0 0.8rem; max-width:80ch;}
+  .agents{display:grid; grid-template-columns:repeat(auto-fit, minmax(230px,1fr)); gap:0.7rem;}
+  .agent{border:1px dashed var(--line); border-radius:8px; padding:0.6rem 0.75rem; font-size:0.78rem;}
+  .agent b{display:block; font-size:0.8rem; margin-bottom:0.15rem;}
+  .agent .gate{font-family: ui-monospace, Consolas, monospace; font-size:0.62rem;
+    letter-spacing:0.06em; text-transform:uppercase; color:var(--muted); display:block; margin-top:0.35rem;}
+
+  .flow-arrows{display:flex; justify-content:center; gap:4rem; margin:0.35rem 0; color:var(--muted);}
+  .flow-arrows span{font-size:1.3rem; line-height:1;}
+  .flow-label{font-family: ui-monospace, Consolas, monospace; font-size:0.62rem; letter-spacing:0.1em;
+    text-transform:uppercase; color:var(--muted); text-align:center; margin:0 0 0.35rem;}
+
+  .stack{display:flex; flex-direction:column; gap:0.4rem; margin-bottom:2.2rem;}
+
+  h2.section{font-size:1.05rem; margin:2.2rem 0 0.9rem; font-weight:700;}
+  .cards{display:grid; grid-template-columns:repeat(auto-fit, minmax(330px, 1fr)); gap:1rem;}
+  .card{border:1px solid var(--line); border-radius:10px; background:var(--panel);
+    box-shadow:var(--shadow); padding:0.9rem 1rem; border-top:3px solid var(--line);
+    display:flex; flex-direction:column; gap:0.5rem;}
+  .card h3{margin:0; font-size:0.92rem; font-weight:700;}
+  .card dl{margin:0; display:grid; grid-template-columns:auto 1fr; gap:0.28rem 0.7rem; font-size:0.79rem;}
+  .card dt{font-family: ui-monospace, Consolas, monospace; font-size:0.6rem; letter-spacing:0.08em;
+    text-transform:uppercase; color:var(--muted); font-weight:600; padding-top:0.15rem; white-space:nowrap;}
+  .card dd{margin:0;}
+  .c-client{border-top-color:var(--client);} .c-method{border-top-color:var(--method);}
+  .c-estim{border-top-color:var(--estim);} .c-comm{border-top-color:var(--comm);}
+  .c-tech{border-top-color:var(--tech);} .c-multi{border-top-color:var(--muted);}
+
+  footer{margin-top:2.5rem; font-size:0.78rem; color:var(--muted); border-top:1px solid var(--line); padding-top:1rem; max-width:80ch;}
+</style>
+
+<div class="wrap">
+  <p class="eyebrow">Delivery Management Framework — Knowledge Management</p>
+  <h1>Knowledge capture and consumption map</h1>
+  <p class="lede">Where knowledge is generated across the engagement lifecycle, how it flows into the agent-operated knowledge base, and where the framework requires it to be consulted. Capture without consumption is administration — the map shows both halves of the obligation.</p>
+
+  <div class="legend">
+    <div class="legend-item"><span class="dot" style="background:var(--client);"></span> Client / account</div>
+    <div class="legend-item"><span class="dot" style="background:var(--method);"></span> Method</div>
+    <div class="legend-item"><span class="dot" style="background:var(--estim);"></span> Estimation</div>
+    <div class="legend-item"><span class="dot" style="background:var(--comm);"></span> Commercial pattern</div>
+    <div class="legend-item"><span class="dot" style="background:var(--tech);"></span> Technical / solution</div>
+    <div class="legend-item"><span class="dot multi"></span> Multiple streams</div>
+  </div>
+
+  <div class="stack">
+
+    <div class="matrix-frame">
+      <h2>Knowledge generated — capture events</h2>
+      <p class="sub">Each event produces or updates a knowledge artifact. Dots mark the lifecycle position; colour marks the knowledge stream.</p>
+      <table class="mx">
+        <thead>
+          <tr>
+            <th class="rowhead">Capture event</th>
+            <th>Pre-signature</th><th>Stage 1<br>transition</th><th>Stage 2<br>delivery</th>
+            <th>Stage 3<br>closure</th><th>Stage 4<br>finance</th><th>Portfolio<br>cadence</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>Pre-signature profile<span class="who">Threshold deals · account Delivery Owner profiles</span></th>
+            <td><span class="mk" style="background:var(--estim);"></span><span class="mk" style="background:var(--method);"></span></td>
+            <td><span class="note">re-confirmed</span></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <th>Delivery Handover Record + Deal Quality score<span class="who">Delivery Owner, at Gate 1</span></th>
+            <td></td>
+            <td><span class="mk" style="background:var(--client);"></span><span class="mk" style="background:var(--comm);"></span></td>
+            <td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <th>Engagement Health Register entries<span class="who">Delivery Owner · fortnightly</span></th>
+            <td></td><td></td>
+            <td><span class="mk" style="background:var(--method);"></span><span class="mk" style="background:var(--comm);"></span><span class="note">fortnightly</span></td>
+            <td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <th>Knowledge note — practitioner rotation<span class="who">Delivery Owner + rotating practitioner · ~15 min</span></th>
+            <td></td><td></td>
+            <td><span class="mk" style="background:var(--method);"></span><span class="note">on rotation</span></td>
+            <td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <th>Knowledge note — phase boundary<span class="who">Delivery Owner · phased programs · ~15 min</span></th>
+            <td></td><td></td>
+            <td><span class="mk" style="background:var(--method);"></span><span class="note">per go/no-go</span></td>
+            <td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <th>Knowledge note — re-profiling event<span class="who">Delivery Owner + Practice Lead · ~15 min</span></th>
+            <td></td><td></td>
+            <td><span class="mk" style="background:var(--method);"></span><span class="note">on trigger</span></td>
+            <td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <th>Exception Decision Record<span class="who">Delivery Director · per Exception Review</span></th>
+            <td></td><td></td>
+            <td><span class="mk" style="background:var(--method);"></span><span class="mk" style="background:var(--comm);"></span><span class="note">as triggered</span></td>
+            <td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <th>Account Delivery Record update<span class="who">Account Delivery Owner · multi-engagement accounts</span></th>
+            <td></td><td></td>
+            <td><span class="mk" style="background:var(--client);"></span><span class="note">monthly</span></td>
+            <td><span class="mk" style="background:var(--client);"></span></td>
+            <td></td><td></td>
+          </tr>
+          <tr>
+            <th>Closure retrospective → Knowledge Base entry<span class="who">Practice Lead / Delivery Owner · 45-60 min, consolidates knowledge notes</span></th>
+            <td></td><td></td><td></td>
+            <td><span class="mk" style="background:var(--method);"></span></td>
+            <td></td><td></td>
+          </tr>
+          <tr>
+            <th>Reusable assets registered<span class="who">Delivery Owner / Practice or Technical Lead</span></th>
+            <td></td><td></td>
+            <td><span class="mk" style="background:var(--tech);"></span><span class="note">as produced</span></td>
+            <td><span class="mk" style="background:var(--tech);"></span><span class="note">at retro</span></td>
+            <td></td><td></td>
+          </tr>
+          <tr>
+            <th>Estimate calibration entry<span class="who">Finance Partner / Practice Lead · timesheet reconciliation, estimate-vs-actual</span></th>
+            <td></td><td></td><td></td><td></td>
+            <td><span class="mk" style="background:var(--estim);"></span></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th>Finance Handover Record<span class="who">Finance Partner · at financial close</span></th>
+            <td></td><td></td><td></td><td></td>
+            <td><span class="mk" style="background:var(--comm);"></span></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="flow-label">capture flows down</p>
+    <div class="flow-arrows"><span>&#8595;</span><span>&#8595;</span><span>&#8595;</span></div>
+
+    <div class="kb-band">
+      <h2>The knowledge base — OKF directory, agent-operated</h2>
+      <p class="sub">One concept per markdown file with YAML frontmatter; markdown links form the knowledge graph. Agents draft and maintain; people confirm. Every agent-drafted entry carries a <code>resource</code> link back to its source record for provenance.</p>
+      <div class="agents">
+        <div class="agent"><b>Enrichment agent</b>Drafts entries from artifacts the framework already produces — health register history, exception records, closure documents.<span class="gate">Writes to drafts only · human confirms</span></div>
+        <div class="agent"><b>Curation agent</b>Dedupe, staleness flags against <code>review_by</code>, link repair, index maintenance.<span class="gate">Flags prompt conversations, not deletions</span></div>
+        <div class="agent"><b>Indexing / retrieval agent</b>Serves the consumption points below — the prior-knowledge check becomes a query, not a manual search.<span class="gate">Read-only</span></div>
+        <div class="agent"><b>Aggregation support</b>Collates structured fields into the quarterly Calibration Block reviews.<span class="gate">Read-only · feeds existing forums</span></div>
+      </div>
+    </div>
+
+    <div class="flow-arrows"><span>&#8595;</span><span>&#8595;</span><span>&#8595;</span></div>
+    <p class="flow-label">consumption flows out — required, not optional</p>
+
+    <div class="matrix-frame">
+      <h2>Knowledge consulted — consumption points</h2>
+      <p class="sub">The four points where the framework requires prior knowledge to be tabled before a decision, plus the recurring calibration and curation cadences.</p>
+      <table class="mx">
+        <thead>
+          <tr>
+            <th class="rowhead">Consumption point</th>
+            <th>Pre-signature</th><th>Stage 1<br>transition</th><th>Stage 2<br>delivery</th>
+            <th>Stage 3<br>closure</th><th>Stage 4<br>finance</th><th>Portfolio<br>cadence</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>Solution design consults estimate history<span class="who">Practice or Technical Lead co-sign · threshold deals</span></th>
+            <td><span class="mk" style="background:var(--estim);"></span></td>
+            <td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <th>Prior-knowledge check at transition meeting<span class="who">Delivery Owner · entries, account history, reusable assets tabled</span></th>
+            <td></td>
+            <td><span class="mk multi"></span></td>
+            <td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <th>Asset reuse logged<span class="who">Delivery Owner · at transition, reviewed at closure</span></th>
+            <td></td>
+            <td><span class="mk" style="background:var(--tech);"></span></td>
+            <td></td>
+            <td><span class="mk" style="background:var(--tech);"></span></td>
+            <td></td><td></td>
+          </tr>
+          <tr>
+            <th>Precedent exceptions tabled at Exception Review<span class="who">Delivery Director · comparable trigger conditions</span></th>
+            <td></td><td></td>
+            <td><span class="mk" style="background:var(--method);"></span><span class="mk" style="background:var(--comm);"></span><span class="note">as triggered</span></td>
+            <td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <th>Win Review knowledge-trail sampling<span class="who">Delivery Director + CCO · useful, not just present</span></th>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td><span class="mk multi"></span><span class="note">quarterly</span></td>
+          </tr>
+          <tr>
+            <th>Calibration Block aggregation<span class="who">Deal quality, estimate-vs-actual, health-to-billing</span></th>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td><span class="mk" style="background:var(--estim);"></span><span class="mk" style="background:var(--comm);"></span><span class="note">quarterly</span></td>
+          </tr>
+          <tr>
+            <th>Curation segment + bench pull<span class="who">Practice Lead at Workforce Review · bench queue as curation source</span></th>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td><span class="mk multi"></span><span class="note">monthly</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <h2 class="section">Capture instrument reference</h2>
+  <div class="cards">
+    <div class="card c-method">
+      <h3>Knowledge note (~15 minutes)</h3>
+      <dl>
+        <dt>Triggers</dt><dd>Practitioner rotation; phase go/no-go boundary; any re-profiling trigger (sponsor change, Exception Review invoked, material scope/duration extension)</dd>
+        <dt>Owner</dt><dd>Delivery Owner (with the rotating practitioner where applicable)</dd>
+        <dt>Content</dt><dd>What we now know that we did not know before; what the next person on this engagement — or the next similar engagement — needs to be told</dd>
+        <dt>Fate</dt><dd>Consolidated by the closure retrospective, so closure becomes synthesis rather than the first capture</dd>
+      </dl>
+    </div>
+    <div class="card c-method">
+      <h3>Closure retrospective (45-60 minutes)</h3>
+      <dl>
+        <dt>Trigger</dt><dd>Gate 2 — every engagement, including early terminations</dd>
+        <dt>Owner</dt><dd>Practice Lead (owns), Delivery Owner (contributes)</dd>
+        <dt>Content</dt><dd>Went well / change / learned about client, technology, approach / commercial and scope issues / follow-on opportunities / reusable assets produced</dd>
+        <dt>Output</dt><dd>Delivery Knowledge Base entry (OKF type: Engagement Retrospective), with <code>review_by</code> date for the curation lifecycle</dd>
+      </dl>
+    </div>
+    <div class="card c-tech">
+      <h3>Reusable asset register</h3>
+      <dl>
+        <dt>Captures</dt><dd>Accelerators, reference architectures, templates — created from work already done</dd>
+        <dt>Owner</dt><dd>Practice Lead per practice area</dd>
+        <dt>Signal</dt><dd>Asset-reuse per engagement: consulted or reused, logged at the Stage 1 transition meeting, reviewed at closure</dd>
+        <dt>Why</dt><dd>The single biggest gross-margin lever in technology professional services — estimation risk removed before the engagement starts</dd>
+      </dl>
+    </div>
+    <div class="card c-multi">
+      <h3>Demand-side metrics</h3>
+      <dl>
+        <dt>Reuse</dt><dd>Entries referenced at Stage 1 per new engagement; reusable asset reuse rate; precedent exceptions consulted per Exception Review</dd>
+        <dt>Health</dt><dd>% of entries past their <code>review_by</code> date (staleness); knowledge note completion at mid-engagement events</dd>
+        <dt>Quality</dt><dd>Win Review knowledge-trail usefulness — useful, not just present</dd>
+        <dt>Floor</dt><dd>Retrospective and entry completion rates retained at 100%, demoted from target to floor</dd>
+      </dl>
+    </div>
+  </div>
+
+  <footer>
+    Streams per knowledge-management.md: client/account, method, estimation, commercial pattern, technical/solution. Storage standard: Open Knowledge Format (OKF) v0.1 — markdown + YAML frontmatter, <code>type</code> mandatory, markdown links as the knowledge graph. Sources: knowledge-management.md; stage-1 through stage-4; delivery-portfolio-management.md.
+  </footer>
+</div>
+
+</body>
+</html>

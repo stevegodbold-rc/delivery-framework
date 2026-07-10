@@ -39,7 +39,7 @@ Or, where the engagement ended before contracted scope was complete: the alterna
 
 **Closure Acknowledgement escalation.** If the client has not provided the Closure Acknowledgement within 10 business days of it being requested, the Delivery Owner escalates to the Delivery Director. The Delivery Director makes one further documented attempt to secure it. If there is still no response after a further 5 business days, the Delivery Director may approve proceeding to Gate 3 without a client signature, provided the attempts to secure it — dates, channel, and content of each request — are logged in place of the signed acknowledgement. This exists so a withheld signature cannot be used as indefinite leverage; it does not remove the obligation to seek the client's sign-off in good faith first.
 
-**Internal retrospective (45-60 minutes).** The primary knowledge capture mechanism for the engagement. Output is a completed Delivery Knowledge Base entry.
+**Internal retrospective (45-60 minutes).** The primary knowledge capture mechanism for the engagement. Output is a completed Delivery Knowledge Base entry, filed per the knowledge management guidance. Where practitioner rotations, phase boundaries, or re-profiling events produced knowledge notes earlier in the engagement (see knowledge-management.md, Capture Across the Framework), the retrospective consolidates those notes rather than starting from a blank page.
 
 Retrospective agenda:
 - What went well that we should repeat?
