@@ -35,6 +35,7 @@ The framework sits above project methodology. It does not prescribe whether a pr
 | [stage-2-project-engagement-delivery.md](stage-2-project-engagement-delivery.md) | Delivery cadence, engagement health scoring, vehicle-specific leading indicators (fixed-price cost-to-complete/EAC, T&M funding/PO runway), scope and change management, Recovery and Exception management, methodology interface guidance mapping each delivery vehicle to its governance cadence, the early termination/partial closure route through Gate 2, workforce and utilisation guidance, and Stage 2 metrics. |
 | [stage-3-delivery-closure.md](stage-3-delivery-closure.md) | Gate 2 criteria, client closure meeting, internal retrospective, practitioner transition planning, the Closure Acknowledgement and its timeboxed escalation route, early termination and partial closure, and Stage 3 metrics. |
 | [stage-4-delivery-to-finance-transition.md](stage-4-delivery-to-finance-transition.md) | Gate 3 criteria, timesheet reconciliation, revenue recognition review, retention management, the Finance Handover Record, and Stage 4 metrics. |
+| [role-position-descriptions.md](role-position-descriptions.md) | Position descriptions for the Delivery Director, Practice Lead, and Resource Manager roles, compiled from their responsibilities, decision rights, owned metrics, and standing cadences across the framework. |
 
 ---
 
