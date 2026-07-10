@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Adoption Tiers — Delivery Framework</title>
+</head>
+<body>
+<style>
+  :root{
+    --ink:#17212b;
+    --paper:#eef1f0;
+    --panel:#ffffff;
+    --line:#c7d0ce;
+    --muted:#55635f;
+    --t1:#0f6e64;  --t1-soft:#d3e9e6;   /* core */
+    --t2:#31567f;  --t2-soft:#dbe5ef;   /* operating */
+    --t3:#7a5a9e;  --t3-soft:#e7ddf1;   /* scale */
+    --gap:#a8402f; --gap-soft:#f1dcd6;  /* unbuilt */
+    --shadow: 0 1px 2px rgba(23,33,43,0.06);
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --ink:#e7ece9; --paper:#121917; --panel:#182220; --line:#2c3835; --muted:#9fb0ab;
+      --t1:#3fb3a4; --t1-soft:#1d3634;
+      --t2:#7aa5d4; --t2-soft:#1e2b3a;
+      --t3:#b294d6; --t3-soft:#2c2438;
+      --gap:#d9695c; --gap-soft:#3a201c;
+      --shadow: 0 1px 3px rgba(0,0,0,0.4);
+    }
+  }
+  :root[data-theme="dark"]{
+    --ink:#e7ece9; --paper:#121917; --panel:#182220; --line:#2c3835; --muted:#9fb0ab;
+    --t1:#3fb3a4; --t1-soft:#1d3634;
+    --t2:#7aa5d4; --t2-soft:#1e2b3a;
+    --t3:#b294d6; --t3-soft:#2c2438;
+    --gap:#d9695c; --gap-soft:#3a201c;
+    --shadow: 0 1px 3px rgba(0,0,0,0.4);
+  }
+  :root[data-theme="light"]{
+    --ink:#17212b; --paper:#eef1f0; --panel:#ffffff; --line:#c7d0ce; --muted:#55635f;
+    --t1:#0f6e64; --t1-soft:#d3e9e6;
+    --t2:#31567f; --t2-soft:#dbe5ef;
+    --t3:#7a5a9e; --t3-soft:#e7ddf1;
+    --gap:#a8402f; --gap-soft:#f1dcd6;
+    --shadow: 0 1px 2px rgba(23,33,43,0.06);
+  }
+
+  *{box-sizing:border-box;}
+  body{margin:0; background:var(--paper); color:var(--ink);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; line-height:1.45;}
+  .wrap{max-width:1560px; margin:0 auto; padding:2.5rem 2rem 4rem;}
+
+  .eyebrow{font-family: ui-monospace, Consolas, monospace; font-size:0.72rem; letter-spacing:0.12em;
+    text-transform:uppercase; color:var(--t2); font-weight:600; margin:0 0 0.6rem;}
+  h1{font-size:clamp(1.6rem,2.6vw,2.15rem); margin:0 0 0.5rem; font-weight:700; letter-spacing:-0.01em; text-wrap:balance;}
+  .lede{max-width:68ch; color:var(--muted); font-size:1rem; margin:0 0 1.75rem;}
+
+  .tiers-scroll{overflow-x:auto; padding-bottom:0.5rem;}
+  .tiers{display:grid; grid-template-columns:1fr 44px 1fr 44px 1fr; gap:0; min-width:1180px; align-items:stretch;}
+
+  .tier{border:1px solid var(--line); border-radius:12px; background:var(--panel);
+    box-shadow:var(--shadow); display:flex; flex-direction:column; overflow:hidden;}
+  .tier-head{padding:1rem 1.2rem 0.85rem; border-bottom:1px solid var(--line);}
+  .tier-head .chip{font-family: ui-monospace, Consolas, monospace; font-size:0.62rem; letter-spacing:0.08em;
+    text-transform:uppercase; font-weight:700; padding:0.18rem 0.55rem; border-radius:999px; display:inline-block; margin-bottom:0.4rem;}
+  .tier-head h2{margin:0 0 0.2rem; font-size:1.15rem; font-weight:700;}
+  .tier-head .scale{font-size:0.78rem; color:var(--muted);}
+  .tier-head .counts{display:flex; gap:1.2rem; margin-top:0.6rem;}
+  .tier-head .count b{display:block; font-size:1.15rem; font-variant-numeric:tabular-nums; line-height:1.1;}
+  .tier-head .count span{font-family: ui-monospace, Consolas, monospace; font-size:0.58rem;
+    letter-spacing:0.07em; text-transform:uppercase; color:var(--muted);}
+
+  .t-core .tier-head{border-top:4px solid var(--t1);} .t-core .chip{background:var(--t1-soft); color:var(--t1);}
+  .t-oper .tier-head{border-top:4px solid var(--t2);} .t-oper .chip{background:var(--t2-soft); color:var(--t2);}
+  .t-scale .tier-head{border-top:4px solid var(--t3);} .t-scale .chip{background:var(--t3-soft); color:var(--t3);}
+
+  .tier-body{padding:0.9rem 1.2rem 1.1rem; display:flex; flex-direction:column; gap:0.75rem; flex:1;}
+  .group h3{margin:0 0 0.25rem; font-family: ui-monospace, Consolas, monospace; font-size:0.62rem;
+    letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); font-weight:600;}
+  .group ul{margin:0; padding-left:1.05rem; font-size:0.8rem;}
+  .group li{margin:0.14rem 0;}
+  .group li.new{font-weight:600;}
+  .group li .why{color:var(--muted); font-weight:400;}
+  .inherit{font-size:0.72rem; color:var(--muted); font-style:italic; margin:0;}
+
+  .arrow{display:flex; flex-direction:column; align-items:center; justify-content:center; gap:0.3rem; padding:0 0.15rem;}
+  .arrow .glyph{font-size:1.5rem; color:var(--muted); line-height:1;}
+  .arrow .gate-label{writing-mode:vertical-rl; font-family: ui-monospace, Consolas, monospace;
+    font-size:0.58rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted);}
+
+  .gates{display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:1.1rem; min-width:0;}
+  .gate-card{border:1px dashed var(--line); border-radius:10px; background:var(--panel); padding:0.8rem 1rem; font-size:0.8rem;}
+  .gate-card h3{margin:0 0 0.3rem; font-size:0.82rem; font-weight:700;}
+  .gate-card h3 .mono{font-family: ui-monospace, Consolas, monospace; font-size:0.62rem; letter-spacing:0.08em;
+    text-transform:uppercase; color:var(--muted); font-weight:600; display:block; margin-bottom:0.15rem;}
+  .gate-card ul{margin:0; padding-left:1.05rem;}
+  .gate-card li{margin:0.12rem 0;}
+
+  .gap-band{margin-top:1.6rem; border:1.5px dashed var(--gap); border-radius:12px;
+    background:var(--panel); padding:1rem 1.2rem;}
+  .gap-band h2{margin:0 0 0.2rem; font-size:1rem; color:var(--gap);}
+  .gap-band .sub{font-size:0.8rem; color:var(--muted); margin:0 0 0.7rem;}
+  .gap-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:0.6rem;}
+  .gap-item{background:var(--gap-soft); border-radius:8px; padding:0.55rem 0.75rem; font-size:0.78rem;}
+  .gap-item b{display:block; font-size:0.8rem;}
+  .gap-item span{color:var(--muted);}
+
+  footer{margin-top:2.5rem; font-size:0.78rem; color:var(--muted); border-top:1px solid var(--line); padding-top:1rem; max-width:82ch;}
+</style>
+
+<div class="wrap">
+  <p class="eyebrow">Delivery Management Framework — Adoption Tiering</p>
+  <h1>From minimum viable core to the full framework</h1>
+  <p class="lede">Three adoption tiers keyed to organisational scale, per the second delivery-executive review. Each tier inherits everything below it; <strong>bold items</strong> are what the tier adds. The advancement gates between tiers are conditions, not dates — move when the evidence says the current tier is embedded, not when a quarter ends.</p>
+
+  <div class="tiers-scroll">
+    <div class="tiers">
+
+      <div class="tier t-core">
+        <div class="tier-head">
+          <span class="chip">Tier 1 — Core</span>
+          <h2>Minimum viable subset</h2>
+          <div class="scale">~50 people · adopting cold · quarter one</div>
+          <div class="counts">
+            <div class="count"><b>~15</b><span>metrics</span></div>
+            <div class="count"><b>1+1</b><span>monthly forum + qtr block</span></div>
+            <div class="count"><b>1</b><span>WIP limit</span></div>
+          </div>
+        </div>
+        <div class="tier-body">
+          <div class="group"><h3>Stages &amp; gates</h3>
+            <ul>
+              <li class="new">Gate 1: transition meeting, Delivery Handover Record</li>
+              <li class="new">Deal Quality score — Red commercial position notifies the Delivery Director day one</li>
+              <li class="new">Gates 2-3, Closure Acknowledgement + escalation, retrospective, Finance Handover Record</li>
+            </ul>
+          </div>
+          <div class="group"><h3>Engagement control</h3>
+            <ul>
+              <li class="new">Fortnightly health check <em>with</em> EAC / runway evidence checks <span class="why">— the self-rating antidote; non-negotiable</span></li>
+              <li class="new">Recovery &amp; Exception with Delegation of Authority bands</li>
+              <li class="new">Monthly client business review</li>
+            </ul>
+          </div>
+          <div class="group"><h3>Portfolio</h3>
+            <ul>
+              <li class="new">One merged monthly operating forum <span class="why">— same four chairs at this scale</span></li>
+              <li class="new">Quarterly Calibration Block, kept sacrosanct</li>
+              <li class="new">Delivery Owner load ceiling — the one WIP limit</li>
+            </ul>
+          </div>
+          <div class="group"><h3>Knowledge</h3>
+            <ul>
+              <li class="new">Closure retrospectives + Stage 1 prior-knowledge check</li>
+              <li class="new">Plain shared markdown folder — no agents, no conformance ambitions</li>
+            </ul>
+          </div>
+          <div class="group"><h3>Deliberately deferred</h3>
+            <ul>
+              <li>Win Review <span class="why">(needs a year of paper trail)</span></li>
+              <li>Account Delivery Record <span class="why">(until a second engagement exists in an account)</span></li>
+              <li>Delivery-led sales metric suite <span class="why">(log signals in CRM; skip measurement)</span></li>
+              <li>Full queue set beyond the DO ceiling</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="arrow"><span class="glyph">&#8594;</span><span class="gate-label">advance gate A</span></div>
+
+      <div class="tier t-oper">
+        <div class="tier-head">
+          <span class="chip">Tier 2 — Operating</span>
+          <h2>Full engagement machinery</h2>
+          <div class="scale">~50-120 people · core embedded · year two</div>
+          <div class="counts">
+            <div class="count"><b>~35</b><span>metrics</span></div>
+            <div class="count"><b>3+1</b><span>monthly forums + qtr block</span></div>
+            <div class="count"><b>4</b><span>managed queues</span></div>
+          </div>
+        </div>
+        <div class="tier-body">
+          <p class="inherit">Everything in Core, plus:</p>
+          <div class="group"><h3>Pre-sales interface</h3>
+            <ul>
+              <li class="new">Pre-signature profiling on threshold deals; profiler becomes Delivery Owner</li>
+              <li class="new">Solution design co-sign (Practice or Technical Lead)</li>
+              <li class="new">Conditional acceptance at Gate 1; re-profiling triggers mid-flight</li>
+              <li class="new">Deal Quality aggregation + downstream-outcome correlation <span class="why">— hold the line on the correlation, not the raw scores</span></li>
+            </ul>
+          </div>
+          <div class="group"><h3>Portfolio</h3>
+            <ul>
+              <li class="new">Three monthly forums: Portfolio Health, Capacity, Commercial Health</li>
+              <li class="new">Win Review joins the Calibration Block <span class="why">— paper trail now exists</span></li>
+              <li class="new">Queues: handoff, resource gap, requisition WIP, bench %</li>
+              <li class="new">Lead times as p50/p85 distributions</li>
+            </ul>
+          </div>
+          <div class="group"><h3>Accounts &amp; growth</h3>
+            <ul>
+              <li class="new">Account Delivery Record on multi-engagement accounts</li>
+              <li class="new">Delivery-Led Sales Review, CCO-chaired</li>
+            </ul>
+          </div>
+          <div class="group"><h3>Knowledge</h3>
+            <ul>
+              <li class="new">Knowledge notes at rotation, phase boundary, re-profiling</li>
+              <li class="new"><code>review_by</code> curation lifecycle; demand-side metrics begin</li>
+              <li class="new">OKF-shaped schema (Option A → B as volume justifies)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="arrow"><span class="glyph">&#8594;</span><span class="gate-label">advance gate B</span></div>
+
+      <div class="tier t-scale">
+        <div class="tier-head">
+          <span class="chip">Tier 3 — Scale</span>
+          <h2>Full framework</h2>
+          <div class="scale">~120-200 people · multiple practices</div>
+          <div class="counts">
+            <div class="count"><b>~65</b><span>metrics</span></div>
+            <div class="count"><b>6</b><span>managed queues</span></div>
+            <div class="count"><b>4</b><span>KM agent roles</span></div>
+          </div>
+        </div>
+        <div class="tier-body">
+          <p class="inherit">Everything in Operating, plus:</p>
+          <div class="group"><h3>Accounts &amp; authority</h3>
+            <ul>
+              <li class="new">Account-aligned assignment; strategic-account definition live</li>
+              <li class="new">Strategic-account health moderation (Practice Lead co-review, override visibility)</li>
+              <li class="new">Full Delegation of Authority use, MD escalation band</li>
+            </ul>
+          </div>
+          <div class="group"><h3>Flow &amp; forums</h3>
+            <ul>
+              <li class="new">Full queue set with aging views; exception aging as governance signal</li>
+              <li class="new">Methodology interfaces across a mixed portfolio (PRINCE2 boards, Scrum/Kanban evidence, phase-level triggers)</li>
+              <li class="new">Full standing-forum structure with named segments</li>
+            </ul>
+          </div>
+          <div class="group"><h3>Knowledge</h3>
+            <ul>
+              <li class="new">Agent-operated: enrichment, curation, retrieval, aggregation <span class="why">— requires a named tooling owner first</span></li>
+              <li class="new">Reusable asset register with reuse-rate signal per practice</li>
+            </ul>
+          </div>
+          <div class="group"><h3>Prerequisites this tier exposes</h3>
+            <ul>
+              <li>Sub-portfolio construct <span class="why">— not yet designed</span></li>
+              <li>Plural-role forum design (multiple Practice Leads) <span class="why">— not yet designed</span></li>
+              <li>Named successors on strategic accounts <span class="why">— not yet designed</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="gates">
+    <div class="gate-card">
+      <h3><span class="mono">Advance gate A</span>Core → Operating: move when…</h3>
+      <ul>
+        <li>The core cadence has held for two consecutive quarters without rationale-templating — written health rationales are still specific, not copy-paste</li>
+        <li>The first threshold deal or multi-engagement account has actually occurred</li>
+        <li>A year of closure paper trail exists to make the Win Review worth running</li>
+        <li>Delivery Owner framework load is measurably below the ~15-20% honesty ceiling</li>
+      </ul>
+    </div>
+    <div class="gate-card">
+      <h3><span class="mono">Advance gate B</span>Operating → Scale: move when…</h3>
+      <ul>
+        <li>More than one practice area operates with its own Practice Lead — and the plural-role forum design exists to seat them</li>
+        <li>10+ Delivery Owners; sub-portfolio construct designed before, not after, the Delivery Director's calendar breaks</li>
+        <li>A named tooling/platform owner exists for the knowledge agents — without one, consumption stays manual and must stay best-effort</li>
+        <li>Recurring revenue approaching ~25% of the book — which also makes the renewal gate (below) urgent, not optional</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="gap-band">
+    <h2>Not yet designed — known gaps at any tier</h2>
+    <p class="sub">Named by the second executive review. These are not tier-3 luxuries; several become load-bearing the moment the conditions above are met.</p>
+    <div class="gap-grid">
+      <div class="gap-item"><b>Managed services renewal gate</b><span>Survived two reviews unbuilt. No renewal checkpoint, SLA health dimensions, or ARR/churn view — the account-growth engine has no renewal engine to convert into.</span></div>
+      <div class="gap-item"><b>Sub-portfolio construct</b><span>The Delivery Director role is single-threaded; the position description's delegation note is an IOU, not a design.</span></div>
+      <div class="gap-item"><b>Capacity contraction path</b><span>Hiring is a managed queue; downsizing has no mechanism, forum, or owner. Flow is managed in one direction only.</span></div>
+      <div class="gap-item"><b>Strategic-account delegation fix</b><span>Value bands should apply within strategic accounts, MD informed rather than deciding below-band.</span></div>
+      <div class="gap-item"><b>Formal dispute path &amp; recovery plan artifact</b><span>Client-initiated contractual disputes differ from mutual early termination; Red engagements need a dated, client-visible recovery plan.</span></div>
+      <div class="gap-item"><b>Subcontractor / partner co-delivery</b><span>Commonly 10-30% of capacity at this scale; zero treatment in workforce, quality, or margin machinery.</span></div>
+      <div class="gap-item"><b>Delivery Owner succession</b><span>Mid-engagement DO departure — especially on a Red engagement or strategic account — triggers nothing defined.</span></div>
+      <div class="gap-item"><b>Project Board seats vs. WIP</b><span>Senior Delivery Owners' board representation counts toward nobody's ceiling — invisible work the framework elsewhere forbids.</span></div>
+    </div>
+  </div>
+
+  <footer>
+    Tiering per the second delivery-executive review's verdict: full cold adoption at 50 people ≈ 15% two-quarter survival; subset adoption &gt; 70%. Each tier's additions preserve the mechanisms the review rated worth defending (Recovery &amp; Exception, evidence-forced health checks, methodology interfaces, flow management) while sequencing the weight. Sources: readme.md, stage-1 through stage-4, delivery-portfolio-management.md, knowledge-management.md, role-position-descriptions.md.
+  </footer>
+</div>
+
+</body>
+</html>
