@@ -50,10 +50,12 @@ These measures inform hiring and job assignment decisions. They are reviewed at 
 | Metric | Description | Segment | Type | Owner |
 |---|---|---|---|---|
 | Deal stage for forecast | Pipeline stage distribution, probability-weighted by expected close date | By deal size and complexity | Leading | Sales / Delivery Director |
-| Mean lead time: close to start | Average elapsed days between contract signature and engagement kickoff | By deal size and complexity | Leading (calibration) | Delivery Director |
-| Mean lead time: advertise to ready | Total elapsed days from job posting through to a new hire reaching billable productivity, combining time to hire and onboarding duration into a single end-to-end resourcing lead time | By seniority band | Leading (calibration) | Resource Manager |
+| Lead time: close to start (p50 / p85) | Elapsed days between contract signature and engagement kickoff, reported as median and 85th percentile rather than a single average | By deal size and complexity | Leading (calibration) | Delivery Director |
+| Lead time: advertise to ready (p50 / p85) | Total elapsed days from job posting through to a new hire reaching billable productivity, combining time to hire and onboarding duration into a single end-to-end resourcing lead time, reported as median and 85th percentile rather than a single average | By seniority band | Leading (calibration) | Resource Manager |
 
 > Advertise to ready is the operationally meaningful number for capacity planning. Knowing that a hire takes 30 days to secure and 45 days to reach productivity means the organisation must commit to a hiring decision 75 days before the delivery demand arrives. Tracking the two components separately is useful for diagnosing where delays occur, but the combined figure is what drives the planning decision.
+>
+> Both lead-time measures are reported as a distribution (p50 / p85), not a mean. This framework treats a delivery plan as a probability distribution, not a commitment, and a mean lead time hides exactly the tail that matters for planning: the p85 is what should drive the hiring decision or the kickoff commitment, because it reflects the case that actually blows out the schedule. A mean of 30 days can sit alongside a p85 of 55 days without the average ever showing it. Where the two figures diverge significantly, that gap is itself a signal worth raising at the pipeline and capacity review.
 
 **Capability variables**
 
@@ -150,6 +152,41 @@ These measures provide visibility of risks and patterns that exist across the en
 | Portfolio health review | Monthly | Delivery Director, all Delivery Owners, Practice Lead, Resource Manager | Review cross-portfolio health distribution, workforce pressure, and concentration risks |
 | Workforce review | Monthly | Practice Lead, Resource Manager | Utilisation, bench time, allocation gaps, and skilling investment priorities |
 | Finance and forecast review | Monthly | Delivery Director, Finance Partner | Forecast-to-actual variance, revenue recognition status, and commercial risk across the portfolio |
+
+---
+
+## Flow Management
+
+### Purpose
+
+The portfolio already tracks utilisation, bench time, resource-gap fill time, and lead times above. Almost all of that is tracked as a snapshot or an average — a point-in-time reading or a mean, not a managed queue with a limit. The one place a real flow-control policy already exists in this document is Remaining capacity in Sales and Delivery Alignment > Capacity variables, which is held above a minimum threshold at all times specifically to absorb variance. This section extends that same logic — a limit, an aging view, and a pull policy — to the other queues work already moves through across the portfolio: engagements per Delivery Owner, the resource-gap queue, the bench, hiring requisitions, Recovery and Exception status, and the sales-to-delivery handoff. It does not introduce new work; it makes visible, as flow, movement the framework already measures.
+
+### Managed Queues
+
+| Queue | What it is | Limit / aging threshold | Pull policy | Owner |
+|---|---|---|---|---|
+| Delivery Owner engagement load | Concurrent engagements held by each Delivery Owner, weighted by delivery vehicle complexity rather than counted flat | Complexity-weighted ceiling set per Delivery Owner at the monthly portfolio review | A Delivery Owner at their ceiling does not receive a new engagement without an explicit capacity trade-off decision at the portfolio review: something else moves, is delayed, or another Delivery Owner takes it | Delivery Director |
+| Resource gap queue | Concurrently open, unresolved resource gaps the Resource Manager is carrying | Gap open beyond 10 business days | Escalates to the Practice Lead | Resource Manager |
+| Bench queue | Practitioners without confirmed allocation, viewed as a queue rather than only as individual bench-time entries | Bench count as a % of total delivery headcount | Read alongside Remaining capacity; if the bench queue grows past what Remaining capacity was sized to absorb, the buffer sizing itself is treated as wrong and revisited, not the bench | Resource Manager |
+| Hiring requisition queue | Concurrent open requisitions per practice area | WIP limit on concurrent open requisitions per practice area; aging flag when a requisition exceeds the calibrated advertise-to-ready benchmark for its seniority band | Requisitions exceeding the practice area limit are not posted until an existing requisition closes or the limit is explicitly raised at the hiring and skilling review | Practice Lead |
+| Recovery and Exception queue | Engagements currently in Recovery and Exception status | Days an engagement has remained in Recovery and Exception status | An exception open beyond the agreed review interval is escalated as a governance issue in its own right, separate from the underlying engagement problem | Delivery Director |
+| Sales-to-delivery handoff queue | Signed-but-not-yet-started engagements queued for Gate 1 / kickoff | Queue length, point-in-time | A growing queue is raised at the pipeline and capacity review as an earlier warning than the lead-time distribution above, before the mean or the p85 shows it | Delivery Director |
+
+**Delivery Owner engagement load.** The existing Active engagements per Delivery Owner metric tracks a count with no ceiling. Engagement weight is not a fixed point-scoring formula: a Phased Program or Structured Project engagement counts for more of a Delivery Owner's ceiling than a Lightweight or Advisory engagement, following the same profile categories set at Gate 1. The ceiling itself is set per Delivery Owner, not fixed globally, because leadership strength and engagement mix vary by person. It is agreed and revisited at the monthly portfolio review.
+
+**Resource gap queue.** Time to fill open resource gaps is currently reported as an average, which hides how many gaps are open at once. The queue-length view — how many unresolved gaps the Resource Manager is carrying at a point in time — surfaces pressure the average cannot. A gap open beyond 10 business days, mirroring the existing bench-time threshold, escalates to the Practice Lead rather than sitting in the average indefinitely.
+
+**Bench queue.** Bench time by practitioner already carries a >10 business day aging threshold for individuals (see Stage 2: Workforce management). This adds a queue-level view — bench count as a % of total delivery headcount — read alongside, not instead of, Remaining capacity. The two measures are connected: Remaining capacity is the buffer sized to absorb variance, and the bench queue is what that buffer is actually absorbing. If the bench queue consistently outgrows what Remaining capacity was sized for, that is a signal the buffer threshold needs resizing, not that individual practitioners are the problem.
+
+**Hiring requisition queue.** Lead time: advertise to ready (p50 / p85) tells the organisation how long a requisition typically takes, and how long the slower tail takes. It does not show how many requisitions are open and competing for sourcing attention at once. A WIP limit on concurrent open requisitions per practice area keeps postings from queuing behind each other indefinitely, and an aging flag on any requisition exceeding the calibrated benchmark for its seniority band gives the Practice Lead an early view of which specific postings are stalling.
+
+**Recovery and Exception queue.** Engagements in Recovery and Exception status is currently a count. An exception that lingers unresolved for months is a governance failure independent of whatever underlying engagement problem triggered it. Tracking days in status surfaces that distinction and prevents a Recovery and Exception entry from becoming a permanent, unexamined feature of the portfolio view.
+
+**Sales-to-delivery handoff queue.** This queue is not currently tracked. Lead time: close to start (p50 / p85) reports how long the transition from signature to kickoff takes on average. The number of engagements currently queued waiting for that transition is an earlier signal: a queue that is growing predicts that the lead-time distribution is about to worsen, before the p50 or p85 shows any movement at all.
+
+### Cadence
+
+Queue and WIP data is reviewed within the existing standing reviews, not a new one. The Delivery Owner engagement load, Recovery and Exception queue, and sales-to-delivery handoff queue are reviewed as part of the monthly Portfolio health review; the resource gap queue and bench queue are reviewed as part of the monthly Workforce review; the hiring requisition queue and both lead-time distributions are reviewed as part of the monthly Pipeline and capacity review. No additional meeting is introduced by this section.
 
 ---
 
@@ -284,8 +321,8 @@ Client maturity metrics — including engagement breadth across service types, n
 | % of disputed invoices preceded by Amber or Red commercial health | Financial view | Leading (calibration) | Quarterly | Finance Partner / Delivery Director |
 | % of extended DSO engagements preceded by Amber or Red commercial health | Financial view | Leading (calibration) | Quarterly | Finance Partner / Delivery Director |
 | Deal stage for forecast | Sales and delivery alignment | Leading | Monthly | Sales / Delivery Director |
-| Mean lead time: close to start | Sales and delivery alignment | Leading (calibration) | Monthly | Delivery Director |
-| Mean lead time: advertise to ready | Sales and delivery alignment | Leading (calibration) | Monthly | Resource Manager |
+| Lead time: close to start (p50 / p85) | Sales and delivery alignment | Leading (calibration) | Monthly | Delivery Director |
+| Lead time: advertise to ready (p50 / p85) | Sales and delivery alignment | Leading (calibration) | Monthly | Resource Manager |
 | T-shape density as % of population | Sales and delivery alignment | Leading | Quarterly | Practice Lead |
 | Core skill population as % of total | Sales and delivery alignment | Leading | Quarterly | Practice Lead |
 | Deal types with high delivery alignment as % of pipeline | Sales and delivery alignment | Leading | Quarterly | Sales / Practice Lead |
@@ -330,3 +367,11 @@ Client maturity metrics — including engagement breadth across service types, n
 | Billable utilisation (rolling 4-week) | Cross-engagement | Leading | Weekly | Resource Manager |
 | Bench time by practitioner | Cross-engagement | Leading | Weekly | Resource Manager |
 | Time to fill open resource gaps | Cross-engagement | Leading | Weekly | Resource Manager |
+| Delivery Owner engagement load vs ceiling (WIP limit status) | Flow management | Leading | Monthly | Delivery Director |
+| Resource gap queue length (open, unresolved) | Flow management | Leading | Weekly | Resource Manager |
+| Resource gaps aged beyond 10 business days | Flow management | Leading | Weekly | Resource Manager |
+| Bench queue as % of total delivery headcount | Flow management | Leading | Weekly | Resource Manager |
+| Open requisitions vs WIP limit, by practice area | Flow management | Leading | Monthly | Practice Lead |
+| Requisitions aged beyond calibrated benchmark, by seniority band | Flow management | Leading | Monthly | Practice Lead |
+| Days in Recovery and Exception status | Flow management | Leading | Fortnightly | Delivery Director |
+| Sales-to-delivery handoff queue length | Flow management | Leading | Monthly | Delivery Director |
